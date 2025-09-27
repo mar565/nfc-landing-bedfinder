@@ -37,7 +37,7 @@
         
         .mario-extension {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            z-index: 70; /* Higher than overlay (z-60) and header (z-50) */
+            z-index: 80 !important; /* Higher than overlay (z-60) and header (z-50) */
         }
         
         /* All mario extensions should be above overlay */
@@ -169,13 +169,13 @@
             
             <!-- Personal Brand Credit -->
             <div class="mb-6">
-                <p class="text-gray-600 text-lg relative z-70">Ein Projekt von</p>
-                <div class="relative inline-block group mario-expand hero-mario z-70">
-                    <div class="font-bold text-2xl text-bambu-green cursor-pointer flex relative z-70">
+                <p class="text-gray-600 text-lg relative" style="z-index: 80;">Ein Projekt von</p>
+                <div class="relative inline-block group mario-expand hero-mario" style="z-index: 80;">
+                    <div class="font-bold text-2xl text-bambu-green cursor-pointer flex relative" style="z-index: 80;">
                         <!-- M -->
                         <div class="relative">
                             <span class="inline-block">M</span>
-                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out mario-extension" style="z-index: 80;">
                                 <div class="flex flex-col items-center text-base text-bambu-green leading-none">
                                     <span>A</span>
                                     <span>R</span>
@@ -188,7 +188,7 @@
                         <!-- A -->
                         <div class="relative">
                             <span class="inline-block">A</span>
-                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out mario-extension" style="z-index: 80;">
                                 <div class="flex flex-col items-center text-base text-bambu-green leading-none">
                                     <span>L</span>
                                     <span>E</span>
@@ -202,8 +202,8 @@
                             </div>
                             
                             <!-- Über mich Button - unter dem A (alexander) positioniert -->
-                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 opacity-0 mario-active-only transition-opacity duration-300 z-70" style="margin-top: 11rem;">
-                                <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors whitespace-nowrap relative z-70">
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 opacity-0 mario-active-only transition-opacity duration-300" style="margin-top: 11rem; z-index: 80;">
+                                <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors whitespace-nowrap relative" style="z-index: 80;">
                                     Über mich
                                 </a>
                             </div>
@@ -212,7 +212,7 @@
                         <!-- R -->
                         <div class="relative">
                             <span class="inline-block">R</span>
-                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out mario-extension" style="z-index: 80;">
                                 <div class="flex flex-col items-center text-base text-bambu-green leading-none">
                                     <span>A</span>
                                     <span>D</span>
