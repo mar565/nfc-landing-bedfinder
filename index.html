@@ -3,32 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.A.R.io - Future Shaper</title>
+    <title>BedFiner - Innovative Bettseitenerkennung</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                        'sans': ['Calibri', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        'bambu-green': '#16C344'
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Calibri', system-ui, sans-serif;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
         <div class="max-w-4xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <div class="font-bold text-xl">M.A.R.io</div>
+                <div class="flex items-center">
+                    <!-- Mini Ellipse Logo for Navigation -->
+                    <div class="border-2 border-bambu-green rounded-full flex items-center justify-center" 
+                         style="width: 60px; height: 24px;">
+                        <span class="text-xs font-bold text-bambu-green">BedFiner</span>
+                    </div>
+                </div>
                 <div class="space-x-4 hidden md:flex">
-                    <a href="#timeline" class="text-gray-600 hover:text-gray-900">Timeline</a>
-                    <a href="#events" class="text-gray-600 hover:text-gray-900">Events</a>
-                    <a href="#about" class="text-gray-600 hover:text-gray-900">Über mich</a>
-                    <a href="#contact" class="text-gray-600 hover:text-gray-900">Kontakt</a>
+                    <a href="#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="#events" class="text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="about.html" class="text-gray-600 hover:text-bambu-green">Über mich</a>
+                    <a href="#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
                 </div>
             </div>
         </div>
@@ -37,13 +51,32 @@
     <!-- Hero Section -->
     <section class="pt-20 pb-16 px-4">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-light mb-8 leading-tight">
-                Let's shape the future<br>
-                together –<br>
-                <span class="font-bold text-blue-600">M.A.R.io</span>
-            </h1>
-            <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                Folge meinem Projekt
+            <!-- Logo with Ellipse -->
+            <div class="flex justify-center items-center mb-8">
+                <div class="relative flex items-center">
+                    <!-- Ellipse with BedFiner -->
+                    <div class="border-4 border-bambu-green rounded-full flex items-center justify-center" 
+                         style="width: 200px; height: 80px;">
+                        <span class="font-bold text-2xl text-bambu-green">BedFiner</span>
+                    </div>
+                    <!-- Vertical Text -->
+                    <div class="ml-6 text-left">
+                        <div class="transform rotate-0 text-lg font-medium text-gray-700 leading-tight">
+                            <div>Innovative</div>
+                            <div>Bettseitenerkennung</div>
+                            <div>für die Zukunft</div>
+                            <div>der Pflege</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Automatisierte Lösung zur Erkennung von Patientenpositionen im Krankenhausbett
+                durch fortschrittliche Sensorik und KI-gestützte Analyse
+            </p>
+            <a href="#contact" class="inline-block bg-bambu-green text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
+                Folge dem Projekt
             </a>
         </div>
     </section>
@@ -53,24 +86,28 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-center">Events & Updates</h2>
             
-            <!-- Aktuelles Event -->
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg">
+            <!-- Aktuelles Event - wird automatisch aktualisiert -->
+            <div id="current-event" class="bg-green-50 border-l-4 border-bambu-green p-6 mb-6 rounded-r-lg">
                 <div class="flex items-center mb-2">
-                    <span class="bg-blue-500 text-white px-2 py-1 rounded text-sm font-medium">HEUTE</span>
+                    <span id="event-status" class="bg-bambu-green text-white px-2 py-1 rounded text-sm font-medium">SEPTEMBER 2025</span>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Robotics Workshop TU Darmstadt</h3>
-                <p class="text-gray-600">Präsentation neuer Entwicklungen in der autonomen Navigation</p>
+                <h3 class="text-xl font-semibold mb-2">Kooperationsvertragsunterzeichnung</h3>
+                <p class="text-gray-600">Hochschule Reutlingen & Kreiskliniken Reutlingen</p>
             </div>
 
             <!-- Vergangene Events -->
             <div class="space-y-4">
                 <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
-                    <h3 class="font-semibold">KI-Konferenz München</h3>
-                    <p class="text-gray-600 text-sm">15. März 2024</p>
+                    <h3 class="font-semibold">Planung des Feldversuches</h3>
+                    <p class="text-gray-600 text-sm">Juli 2025</p>
                 </div>
                 <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
-                    <h3 class="font-semibold">Startup Pitch Night</h3>
-                    <p class="text-gray-600 text-sm">8. Februar 2024</p>
+                    <h3 class="font-semibold">Projektvorstellung Kreisklinikum Reutlingen</h3>
+                    <p class="text-gray-600 text-sm">März 2025 - Geschäftsführung</p>
+                </div>
+                <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
+                    <h3 class="font-semibold">Studienprojekt Abschluss</h3>
+                    <p class="text-gray-600 text-sm">Januar 2025</p>
                 </div>
             </div>
         </div>
@@ -79,38 +116,61 @@
     <!-- Timeline Section -->
     <section id="timeline" class="py-16 px-4 bg-gray-50">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Roadmap</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center">Projekt Roadmap</h2>
             
             <div class="relative">
                 <!-- Timeline Line -->
-                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-blue-500"></div>
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-bambu-green"></div>
                 
                 <!-- Timeline Items -->
                 <div class="space-y-8">
-                    <!-- Item 1 -->
+                    <!-- Item 1 - Validierungs Feldtest -->
                     <div class="relative flex items-center md:justify-center">
-                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white"></div>
+                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gray-400 rounded-full border-4 border-white"></div>
                         <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                            <h3 class="font-semibold">Studienabschluss</h3>
-                            <p class="text-gray-600 text-sm">Q2 2025</p>
+                            <h3 class="font-semibold">Validierungs Feldtest</h3>
+                            <p class="text-gray-600 text-sm">Oktober 2025</p>
+                            <p class="text-gray-500 text-xs">Station im Kreisklinikum</p>
                         </div>
                     </div>
                     
-                    <!-- Item 2 -->
+                    <!-- Item 2 - Kooperationsvertrag -->
+                    <div class="relative flex items-center md:justify-center">
+                        <div id="contract-timeline-item" class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-bambu-green rounded-full border-4 border-white"></div>
+                        <div class="ml-10 md:ml-0 md:w-1/2 md:pl-8">
+                            <h3 class="font-semibold">Kooperationsvertragsunterzeichnung</h3>
+                            <p id="contract-date" class="text-gray-600 text-sm">30. September 2025</p>
+                            <p class="text-gray-500 text-xs">Hochschule Reutlingen & Kreiskliniken</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 - Feldversuch Planung -->
+                    <div class="relative flex items-center md:justify-center">
+                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
+                        <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
+                            <h3 class="font-semibold">Planung des Feldversuches</h3>
+                            <p class="text-gray-600 text-sm">Juli 2025</p>
+                            <p class="text-gray-500 text-xs">Abgeschlossen</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 - Projektvorstellung -->
                     <div class="relative flex items-center md:justify-center">
                         <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
                         <div class="ml-10 md:ml-0 md:w-1/2 md:pl-8">
-                            <h3 class="font-semibold">Erste Publikation</h3>
-                            <p class="text-gray-600 text-sm">Abgeschlossen</p>
+                            <h3 class="font-semibold">Projektvorstellung im Kreisklinikum</h3>
+                            <p class="text-gray-600 text-sm">März 2025</p>
+                            <p class="text-gray-500 text-xs">Geschäftsführung - Abgeschlossen</p>
                         </div>
                     </div>
-                    
-                    <!-- Item 3 -->
+
+                    <!-- Item 5 - Studienprojekt -->
                     <div class="relative flex items-center md:justify-center">
                         <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
                         <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                            <h3 class="font-semibold">Robotics Projekt</h3>
-                            <p class="text-gray-600 text-sm">Abgeschlossen</p>
+                            <h3 class="font-semibold">Studienprojekt Abschluss</h3>
+                            <p class="text-gray-600 text-sm">Januar 2025</p>
+                            <p class="text-gray-500 text-xs">Abgeschlossen</p>
                         </div>
                     </div>
                 </div>
@@ -118,41 +178,40 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 px-4 bg-white">
+    <!-- Project Info Section -->
+    <section class="py-16 px-4 bg-white">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center">Über mich</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center">Das BedFiner Projekt</h2>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
+                    <h3 class="text-xl font-semibold mb-4">Projektbeschreibung</h3>
                     <p class="text-lg mb-6 leading-relaxed">
-                        Student, Hiwi und Robotics-Entwickler mit Leidenschaft für innovative Technologien. 
-                        Aktuell arbeite ich an zukunftsweisenden Projekten im Bereich autonomer Systeme.
+                        BedFiner ist ein innovatives System zur automatischen Erkennung der Bettseite, 
+                        auf der sich ein Patient befindet. Durch den Einsatz modernster Sensorik und 
+                        KI-gestützter Datenanalyse revolutioniert das System die Patientenüberwachung 
+                        in Krankenhäusern und Pflegeeinrichtungen.
                     </p>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">Erfolge</h3>
+                    <h3 class="text-xl font-semibold mb-4">Technische Innovation</h3>
                     <ul class="space-y-2">
                         <li class="flex items-start">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Entwicklung autonomer Navigationssysteme
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Präzise Positionserkennung durch Drucksensorik
                         </li>
                         <li class="flex items-start">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Mehrere Konferenz-Präsentationen
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            KI-basierte Datenauswertung in Echtzeit
                         </li>
                         <li class="flex items-start">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            <span>
-                                <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" class="text-blue-600 hover:underline">
-                                    Veröffentlichungen
-                                </a> (ORCID-Profil)
-                            </span>
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Integration in bestehende Krankenhaus-IT
                         </li>
                         <li class="flex items-start">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Aktive Forschung in KI & Robotik
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Reduzierung des Pflegeaufwands
                         </li>
                     </ul>
                 </div>
@@ -169,30 +228,30 @@
                 <div>
                     <label for="name" class="block text-sm font-medium mb-2">Name</label>
                     <input type="text" id="name" name="name" required 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
                 </div>
                 
                 <div>
                     <label for="email" class="block text-sm font-medium mb-2">E-Mail</label>
                     <input type="email" id="email" name="email" required 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
                 </div>
                 
                 <div>
                     <label for="message" class="block text-sm font-medium mb-2">Nachricht</label>
                     <textarea id="message" name="message" rows="4" required 
-                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent"></textarea>
                 </div>
                 
                 <button type="submit" 
-                        class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                        class="w-full bg-bambu-green text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
                     Nachricht senden
                 </button>
             </form>
             
             <div class="mt-8 text-center">
                 <p class="text-gray-600 mb-2">Oder direkt erreichen:</p>
-                <a href="mailto:deine@email.de" class="text-blue-600 hover:underline">deine@email.de</a>
+                <a href="mailto:deine@email.de" class="text-bambu-green hover:underline">deine@email.de</a>
             </div>
         </div>
     </section>
@@ -202,24 +261,29 @@
         <div class="max-w-4xl mx-auto">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="font-bold text-lg mb-4">M.A.R.io</h3>
-                    <p class="text-gray-400">Shaping the future together</p>
+                    <div class="flex items-center mb-4">
+                        <div class="border-2 border-bambu-green rounded-full flex items-center justify-center mr-3" 
+                             style="width: 60px; height: 24px;">
+                            <span class="text-xs font-bold text-bambu-green">BedFiner</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Innovative Bettseitenerkennung für die Zukunft der Pflege</p>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Kontakt</h4>
-                    <a href="mailto:deine@email.de" class="text-gray-400 hover:text-white">deine@email.de</a>
+                    <a href="mailto:deine@email.de" class="text-gray-400 hover:text-bambu-green">deine@email.de</a>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Legal</h4>
-                    <a href="#" class="text-gray-400 hover:text-white block">Datenschutz</a>
-                    <a href="#" class="text-gray-400 hover:text-white block">Impressum</a>
+                    <a href="#" class="text-gray-400 hover:text-bambu-green block">Datenschutz</a>
+                    <a href="#" class="text-gray-400 hover:text-bambu-green block">Impressum</a>
                 </div>
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 M.A.R.io. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 BedFiner. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
@@ -231,13 +295,24 @@
                 Diese Website verwendet Cookies für eine bessere Nutzererfahrung.
             </p>
             <button onclick="acceptCookies()" 
-                    class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">
+                    class="bg-bambu-green text-white px-4 py-2 rounded text-sm hover:bg-green-700">
                 Akzeptieren
             </button>
         </div>
     </div>
 
     <script>
+        // Check if today is September 30, 2025
+        function updateEventStatus() {
+            const today = new Date();
+            const contractDate = new Date('2025-09-30');
+            
+            if (today.toDateString() === contractDate.toDateString()) {
+                document.getElementById('event-status').textContent = 'HEUTE';
+                document.getElementById('event-status').classList.add('animate-pulse');
+            }
+        }
+
         // Simple Cookie Banner
         function acceptCookies() {
             document.getElementById('cookie-banner').style.display = 'none';
@@ -260,11 +335,14 @@
             });
         });
 
-        // Simple form handling (replace with your Azure Function URL)
+        // Simple form handling
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Kontaktformular noch nicht verbunden. Füge deine Azure Function URL hinzu.');
+            alert('Kontaktformular noch nicht verbunden. Füge deine Backend-URL hinzu.');
         });
+
+        // Initialize date checking
+        updateEventStatus();
     </script>
 </body>
 </html>
