@@ -30,6 +30,11 @@
             max-height: 200px !important;
         }
         
+        /* Show "Über mich" button only when mario is active */
+        .mario-active .mario-active-only {
+            opacity: 1 !important;
+        }
+        
         .mario-extension {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             z-index: 70; /* Higher than overlay (z-60) and header (z-50) */
@@ -37,7 +42,7 @@
         
         /* All mario extensions should be above overlay */
         .mario-extension div {
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 0 0 4px rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.9);
             letter-spacing: 0.1em;
         }
         
@@ -165,7 +170,7 @@
             <!-- Personal Brand Credit -->
             <div class="mb-6">
                 <p class="text-gray-600 text-lg">Ein Projekt von</p>
-                <div class="relative inline-block group mario-expand">
+                <div class="relative inline-block group mario-expand hero-mario">
                     <div class="font-bold text-2xl text-bambu-green cursor-pointer flex">
                         <!-- M -->
                         <div class="relative">
@@ -212,6 +217,13 @@
                         <span>.</span>
                         <!-- io -->
                         <span class="inline-block">io</span>
+                    </div>
+                    
+                    <!-- Über mich Button - nur sichtbar wenn mario-active -->
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 opacity-0 mario-active-only transition-opacity duration-300 z-70">
+                        <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
+                            Über mich
+                        </a>
                     </div>
                 </div>
             </div>
@@ -504,48 +516,50 @@
             }
         }
 
-        // Mario expansion with mobile 2-second delay and desktop permanent (desktop only)
+        // Mario expansion with 2-second delay for all devices
         function initMarioExpansion() {
             const marioElements = document.querySelectorAll('.mario-expand');
-            const isMobile = window.innerWidth < 768;
+            const heroMario = document.querySelector('.mario-expand.hero-mario'); // Only hero mario triggers overlay
             
             // Create overlay element - higher z-index to cover header
             const overlay = document.createElement('div');
             overlay.id = 'mario-overlay';
-            overlay.className = 'fixed inset-0 bg-black bg-opacity-30 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
+            overlay.className = 'fixed inset-0 bg-black bg-opacity-50 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
             document.body.appendChild(overlay);
             
             marioElements.forEach(element => {
                 let timeoutId;
                 let isExpanded = false;
+                const isHeroMario = element.classList.contains('hero-mario');
                 
                 element.addEventListener('mouseenter', () => {
                     clearTimeout(timeoutId);
                     isExpanded = true;
                     
-                    // Show overlay
-                    overlay.style.opacity = '1';
-                    overlay.style.pointerEvents = 'auto';
+                    // Show overlay only for hero mario
+                    if (isHeroMario) {
+                        overlay.style.opacity = '1';
+                        overlay.style.pointerEvents = 'auto';
+                    }
                     
                     // Show extensions by adding a class
                     element.classList.add('mario-active');
                 });
                 
                 element.addEventListener('mouseleave', () => {
-                    if (isMobile) {
-                        // Mobile: 2 seconds delay
-                        timeoutId = setTimeout(() => {
-                            isExpanded = false;
-                            
-                            // Hide overlay
+                    // Both desktop and mobile: 2 seconds delay
+                    timeoutId = setTimeout(() => {
+                        isExpanded = false;
+                        
+                        // Hide overlay only for hero mario
+                        if (isHeroMario) {
                             overlay.style.opacity = '0';
                             overlay.style.pointerEvents = 'none';
-                            
-                            // Hide extensions
-                            element.classList.remove('mario-active');
-                        }, 2000); // 2 seconds for mobile
-                    }
-                    // Desktop: no fadeout, stays visible until mouse leaves
+                        }
+                        
+                        // Hide extensions
+                        element.classList.remove('mario-active');
+                    }, 2000); // 2 seconds for both desktop and mobile
                 });
                 
                 // For touch devices
@@ -553,14 +567,18 @@
                     clearTimeout(timeoutId);
                     isExpanded = true;
                     
-                    overlay.style.opacity = '1';
-                    overlay.style.pointerEvents = 'auto';
+                    if (isHeroMario) {
+                        overlay.style.opacity = '1';
+                        overlay.style.pointerEvents = 'auto';
+                    }
                     element.classList.add('mario-active');
                     
-                    // Auto-hide after 2 seconds on mobile
+                    // Auto-hide after 2 seconds
                     timeoutId = setTimeout(() => {
-                        overlay.style.opacity = '0';
-                        overlay.style.pointerEvents = 'none';
+                        if (isHeroMario) {
+                            overlay.style.opacity = '0';
+                            overlay.style.pointerEvents = 'none';
+                        }
                         element.classList.remove('mario-active');
                     }, 2000);
                 });
