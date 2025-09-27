@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BedFinder - Innovative Bettseitenerkennung by M.A.R.io</title>
+    <title>M.A.R.io - Über mich | BedFinder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,269 +32,236 @@
         <div class="max-w-4xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <!-- M.A.R.io / BedFinder Brand with Expanding Animation -->
-                    <div class="relative group flex items-center">
-                        <div class="font-bold text-xl text-bambu-green cursor-pointer flex">
+                    <div class="relative group flex items-center mario-expand">
+                        <a href="index.html" class="font-bold text-xl text-bambu-green cursor-pointer flex">
                             <!-- M -->
                             <div class="relative">
                                 <span class="inline-block">M</span>
-                                <div class="absolute top-full left-0 overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300 ease-in-out z-50">
-                                    <span class="block text-sm text-bambu-green leading-tight">ario</span>
+                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                    <div class="flex flex-col items-center text-sm text-bambu-green leading-none">
+                                        <span>a</span>
+                                        <span>r</span>
+                                        <span>i</span>
+                                        <span>o</span>
+                                    </div>
                                 </div>
                             </div>
                             <span>.</span>
                             <!-- A -->
                             <div class="relative">
                                 <span class="inline-block">A</span>
-                                <div class="absolute top-full left-0 overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300 ease-in-out z-50">
-                                    <span class="block text-sm text-bambu-green leading-tight">lexander</span>
+                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                    <div class="flex flex-col items-center text-sm text-bambu-green leading-none">
+                                        <span>l</span>
+                                        <span>e</span>
+                                        <span>x</span>
+                                        <span>a</span>
+                                        <span>n</span>
+                                        <span>d</span>
+                                        <span>e</span>
+                                        <span>r</span>
+                                    </div>
                                 </div>
                             </div>
                             <span>.</span>
                             <!-- R -->
                             <div class="relative">
                                 <span class="inline-block">R</span>
-                                <div class="absolute top-full left-0 overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300 ease-in-out z-50">
-                                    <span class="block text-sm text-bambu-green leading-tight">adke</span>
+                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                    <div class="flex flex-col items-center text-sm text-bambu-green leading-none">
+                                        <span>a</span>
+                                        <span>d</span>
+                                        <span>k</span>
+                                        <span>e</span>
+                                    </div>
                                 </div>
                             </div>
                             <span>.</span>
                             <!-- io -->
                             <span class="inline-block">io</span>
-                        </div>
+                        </a>
                         <span class="ml-2 text-gray-600 font-medium">/ BedFinder</span>
                     </div>
                 </div>
                 <div class="space-x-4 hidden md:flex">
-                    <a href="#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
-                    <a href="#events" class="text-gray-600 hover:text-bambu-green">Events</a>
-                    <a href="about.html" class="text-gray-600 hover:text-bambu-green">Über mich</a>
-                    <a href="#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
+                    <a href="index.html#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="index.html#events" class="text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="about.html" class="text-bambu-green font-medium">Über mich</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-bambu-green" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                    <a href="index.html#timeline" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="index.html#events" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="about.html" class="block px-3 py-2 text-bambu-green font-medium">Über mich</a>
+                    <a href="index.html#contact" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Kontakt</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-20 pb-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <!-- Logo with Ellipse - BedFinder Project by M.A.R.io -->
-            <div class="flex justify-center items-center mb-8">
-                <div class="relative flex items-center">
-                    <!-- Ellipse with BedFinder -->
-                    <div class="border-4 border-bambu-green rounded-full flex items-center justify-center" 
-                         style="width: 200px; height: 80px;">
-                        <span class="font-bold text-2xl text-bambu-green" style="font-family: 'Calibri', sans-serif;">BedFinder</span>
-                    </div>
-                    <!-- Vertical Text -->
-                    <div class="ml-6 text-left">
-                        <div class="transform rotate-0 text-lg font-medium text-gray-700 leading-tight">
-                            <div>Let's shape</div>
-                            <div>the future</div>
-                            <div>together</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Personal Brand Credit -->
-            <div class="mb-6">
-                <p class="text-gray-600 text-lg">Ein Projekt von</p>
-                <div class="relative inline-block group">
-                    <span class="font-bold text-2xl text-bambu-green cursor-pointer">M.A.R.io</span>
-                    <!-- Hover Tooltip -->
-                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white p-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 whitespace-nowrap">
-                        <div class="text-sm">
-                            <div><span class="font-bold text-bambu-green">M:</span> Mario</div>
-                            <div><span class="font-bold text-bambu-green">A:</span> Alexander</div>
-                            <div><span class="font-bold text-bambu-green">R:</span> Radke</div>
-                            <div><span class="font-bold text-bambu-green">io:</span> io</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Automatisierte Lösung zur Erkennung von Patientenpositionen im Krankenhausbett
-                durch fortschrittliche Sensorik und KI-gestützte Analyse
-            </p>
-            <a href="#contact" class="inline-block bg-bambu-green text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                Folge dem Projekt
+    <!-- Back Link -->
+    <section class="pt-20 pb-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <a href="index.html" class="inline-flex items-center text-bambu-green hover:text-green-700 transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Zurück zur Hauptseite
             </a>
         </div>
     </section>
 
-    <!-- Events Section -->
-    <section id="events" class="py-16 px-4 bg-white">
+    <!-- About Section -->
+    <section class="pb-16 px-4">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center">Events & Updates</h2>
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Über mich</h1>
             
-            <!-- Aktuelles Event - wird automatisch aktualisiert -->
-            <div id="current-event" class="bg-green-50 border-l-4 border-bambu-green p-6 mb-6 rounded-r-lg">
-                <div class="flex items-center mb-2">
-                    <span id="event-status" class="bg-bambu-green text-white px-2 py-1 rounded text-sm font-medium">SEPTEMBER 2025</span>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Kooperationsvertragsunterzeichnung</h3>
-                <p class="text-gray-600">Hochschule Reutlingen & Kreiskliniken Reutlingen</p>
-            </div>
-
-            <!-- Vergangene Events -->
-            <div class="space-y-4">
-                <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
-                    <h3 class="font-semibold">Planung des Feldversuches</h3>
-                    <p class="text-gray-600 text-sm">Juli 2025</p>
-                </div>
-                <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
-                    <h3 class="font-semibold">Projektvorstellung Kreisklinikum Reutlingen</h3>
-                    <p class="text-gray-600 text-sm">März 2025 - Geschäftsführung</p>
-                </div>
-                <div class="border-l-4 border-gray-300 p-6 rounded-r-lg">
-                    <h3 class="font-semibold">Studienprojekt Abschluss</h3>
-                    <p class="text-gray-600 text-sm">Januar 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section id="timeline" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Projekt Roadmap</h2>
-            
-            <div class="relative">
-                <!-- Timeline Line -->
-                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-bambu-green"></div>
-                
-                <!-- Timeline Items -->
-                <div class="space-y-8">
-                    <!-- Item 1 - Validierungs Feldtest -->
-                    <div class="relative flex items-center md:justify-center">
-                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gray-400 rounded-full border-4 border-white"></div>
-                        <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                            <h3 class="font-semibold">Validierungs Feldtest</h3>
-                            <p class="text-gray-600 text-sm">Oktober 2025</p>
-                            <p class="text-gray-500 text-xs">Station im Kreisklinikum</p>
+            <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Profile Image Placeholder -->
+                    <div class="md:col-span-1">
+                        <div class="w-48 h-48 mx-auto bg-gray-200 rounded-full flex items-center justify-center">
+                            <svg class="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
                         </div>
+                        <h2 class="text-2xl font-bold text-center mt-4 mb-2">M.A.R.io</h2>
+                        <p class="text-center text-gray-600">Entwickler & Innovator</p>
                     </div>
                     
-                    <!-- Item 2 - Kooperationsvertrag -->
-                    <div class="relative flex items-center md:justify-center">
-                        <div id="contract-timeline-item" class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-bambu-green rounded-full border-4 border-white"></div>
-                        <div class="ml-10 md:ml-0 md:w-1/2 md:pl-8">
-                            <h3 class="font-semibold">Kooperationsvertragsunterzeichnung</h3>
-                            <p id="contract-date" class="text-gray-600 text-sm">30. September 2025</p>
-                            <p class="text-gray-500 text-xs">Hochschule Reutlingen & Kreiskliniken</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 3 - Feldversuch Planung -->
-                    <div class="relative flex items-center md:justify-center">
-                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
-                        <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                            <h3 class="font-semibold">Planung des Feldversuches</h3>
-                            <p class="text-gray-600 text-sm">Juli 2025</p>
-                            <p class="text-gray-500 text-xs">Abgeschlossen</p>
-                        </div>
-                    </div>
+                    <!-- About Text -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-xl font-semibold mb-4 text-bambu-green">Leidenschaft für Innovation</h3>
+                        <p class="text-lg mb-6 leading-relaxed">
+                            Als engagierter Student und Entwickler bringe ich Leidenschaft für innovative 
+                            Technologien in jeden Aspekt meiner Arbeit ein. Mein Fokus liegt auf der 
+                            Entwicklung von Lösungen, die echte Probleme in der Gesundheitsbranche 
+                            lösen und das Leben von Patienten und Pflegekräften verbessern.
+                        </p>
+                        
+                        <p class="text-lg mb-6 leading-relaxed">
+                            Mit dem BedFinder-Projekt verfolge ich das Ziel, durch den Einsatz 
+                            modernster Technologien wie KI-gestützter Sensorik und Machine Learning 
+                            die Effizienz und Qualität der Patientenversorgung zu revolutionieren.
+                        </p>
 
-                    <!-- Item 4 - Projektvorstellung -->
-                    <div class="relative flex items-center md:justify-center">
-                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
-                        <div class="ml-10 md:ml-0 md:w-1/2 md:pl-8">
-                            <h3 class="font-semibold">Projektvorstellung im Kreisklinikum</h3>
-                            <p class="text-gray-600 text-sm">März 2025</p>
-                            <p class="text-gray-500 text-xs">Geschäftsführung - Abgeschlossen</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 5 - Studienprojekt -->
-                    <div class="relative flex items-center md:justify-center">
-                        <div class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
-                        <div class="ml-10 md:ml-0 md:w-1/2 md:pr-8 md:text-right">
-                            <h3 class="font-semibold">Studienprojekt Abschluss</h3>
-                            <p class="text-gray-600 text-sm">Januar 2025</p>
-                            <p class="text-gray-500 text-xs">Abgeschlossen</p>
-                        </div>
+                        <p class="text-lg leading-relaxed">
+                            Mein Ansatz kombiniert technische Expertise mit einem tiefen Verständnis 
+                            für die Herausforderungen im Gesundheitswesen, um praxisnahe und 
+                            nachhaltige Innovationen zu schaffen.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Project Info Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center">Das BedFinder Projekt</h2></h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Projektbeschreibung</h3>
-                    <p class="text-lg mb-6 leading-relaxed">
-                        BedFinder ist ein innovatives System zur automatischen Erkennung der Bettseite, 
-                        auf der sich ein Patient befindet. Durch den Einsatz modernster Sensorik und 
-                        KI-gestützter Datenanalyse revolutioniert das System die Patientenüberwachung 
-                        in Krankenhäusern und Pflegeeinrichtungen.
-                    </p>
+            <!-- Skills & Expertise -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-bambu-green">Technische Expertise</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Entwicklung von IoT-Sensorsystemen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Machine Learning & KI-Algorithmen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Datenanalyse und -visualisierung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Embedded Systems Programming</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Medizintechnik-Entwicklung</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Technische Innovation</h3>
-                    <ul class="space-y-2">
+
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-bambu-green">Erfolge & Meilensteine</h3>
+                    <ul class="space-y-3">
                         <li class="flex items-start">
                             <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Präzise Positionserkennung durch Drucksensorik
+                            <span>Erfolgreiche Projektpräsentation vor Klinikleitung</span>
                         </li>
                         <li class="flex items-start">
                             <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            KI-basierte Datenauswertung in Echtzeit
+                            <span>Entwicklung praxistauglicher Prototypen</span>
                         </li>
                         <li class="flex items-start">
                             <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Integration in bestehende Krankenhaus-IT
+                            <span>Kooperationsaufbau mit Kreiskliniken Reutlingen</span>
                         </li>
                         <li class="flex items-start">
                             <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            Reduzierung des Pflegeaufwands
+                            <span>Wissenschaftliche Publikationen geplant</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Aktive Forschung in KI & Medizintechnik</span>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center">Kontakt</h2>
-            
-            <form class="space-y-6 bg-white p-8 rounded-lg shadow-sm">
-                <div>
-                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                    <input type="text" id="name" name="name" required 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
+            <!-- Background -->
+            <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-bambu-green">Mein Werdegang</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-bambu-green pl-6">
+                        <h4 class="font-semibold text-lg">Aktuell: Student & Hiwi</h4>
+                        <p class="text-gray-600 mb-2">2023 - heute</p>
+                        <p>Spezialisierung auf Medizintechnik und innovative Sensorsysteme mit Fokus 
+                        auf praktische Anwendungen im Gesundheitswesen. Parallel tätig als 
+                        wissenschaftliche Hilfskraft in der Forschung.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-gray-300 pl-6">
+                        <h4 class="font-semibold text-lg">BedFinder Projektentwicklung</h4>
+                        <p class="text-gray-600 mb-2">2024 - heute</p>
+                        <p>Konzeption und Entwicklung eines innovativen Systems zur automatischen 
+                        Bettseitenerkennung durch Integration von Drucksensorik, KI-Algorithmen 
+                        und Echtzeit-Datenverarbeitung.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-gray-300 pl-6">
+                        <h4 class="font-semibold text-lg">Forschung & Entwicklung</h4>
+                        <p class="text-gray-600 mb-2">2023 - heute</p>
+                        <p>Intensive Beschäftigung mit IoT-Technologien, Machine Learning 
+                        und deren Anwendung in der Medizintechnik. Entwicklung von Prototypen 
+                        und Durchführung von Machbarkeitsstudien.</p>
+                    </div>
                 </div>
-                
-                <div>
-                    <label for="email" class="block text-sm font-medium mb-2">E-Mail</label>
-                    <input type="email" id="email" name="email" required 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
-                </div>
-                
-                <div>
-                    <label for="message" class="block text-sm font-medium mb-2">Nachricht</label>
-                    <textarea id="message" name="message" rows="4" required 
-                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent"></textarea>
-                </div>
-                
-                <button type="submit" 
-                        class="w-full bg-bambu-green text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                    Nachricht senden
-                </button>
-            </form>
-            
-            <div class="mt-8 text-center">
-                <p class="text-gray-600 mb-2">Oder direkt erreichen:</p>
-                <a href="mailto:deine@email.de" class="text-bambu-green hover:underline">deine@email.de</a>
+            </div>
+
+            <!-- Vision -->
+            <div class="bg-gradient-to-r from-bambu-green to-green-600 rounded-lg shadow-lg p-8 text-white">
+                <h3 class="text-2xl font-semibold mb-4">Meine Vision</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    Ich glaube daran, dass Technologie das Potenzial hat, das Gesundheitswesen 
+                    grundlegend zu verbessern. Mit BedFinder möchte ich einen Beitrag leisten, 
+                    der sowohl Patienten als auch Pflegekräfte entlastet und die Qualität 
+                    der Versorgung nachhaltig steigert.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Mein Ziel ist es, innovative Lösungen zu entwickeln, die nicht nur 
+                    technisch überzeugend sind, sondern auch einen echten Mehrwert für 
+                    die Menschen schaffen, die sie täglich nutzen.
+                </p>
             </div>
         </div>
     </section>
@@ -305,16 +272,53 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <div class="relative group">
-                            <span class="font-bold text-lg text-bambu-green cursor-pointer">M.A.R.io</span>
-                            <!-- Hover Tooltip -->
-                            <div class="absolute bottom-full left-0 mb-2 bg-gray-700 text-white p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 whitespace-nowrap">
-                                <div class="text-xs">
-                                    <div><span class="font-bold text-bambu-green">M:</span> Mario</div>
-                                    <div><span class="font-bold text-bambu-green">A:</span> Alexander</div>
-                                    <div><span class="font-bold text-bambu-green">R:</span> Radke</div>
-                                    <div><span class="font-bold text-bambu-green">io:</span> io</div>
+                        <div class="relative group mario-expand">
+                            <div class="font-bold text-lg text-bambu-green cursor-pointer flex">
+                                <!-- M -->
+                                <div class="relative">
+                                    <span class="inline-block">M</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-sm text-bambu-green leading-none">
+                                            <span>o</span>
+                                            <span>i</span>
+                                            <span>r</span>
+                                            <span>a</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <span>.</span>
+                                <!-- A -->
+                                <div class="relative">
+                                    <span class="inline-block">A</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-sm text-bambu-green leading-none">
+                                            <span>r</span>
+                                            <span>e</span>
+                                            <span>d</span>
+                                            <span>n</span>
+                                            <span>a</span>
+                                            <span>x</span>
+                                            <span>e</span>
+                                            <span>l</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- R -->
+                                <div class="relative">
+                                    <span class="inline-block">R</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-50 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-sm text-bambu-green leading-none">
+                                            <span>e</span>
+                                            <span>k</span>
+                                            <span>d</span>
+                                            <span>a</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- io -->
+                                <span class="inline-block">io</span>
                             </div>
                         </div>
                         <span class="ml-2 text-gray-400">/ BedFinder</span>
@@ -340,40 +344,44 @@
         </div>
     </footer>
 
-    <!-- Simple Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-50">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between">
-            <p class="text-sm mb-4 md:mb-0">
-                Diese Website verwendet Cookies für eine bessere Nutzererfahrung.
-            </p>
-            <button onclick="acceptCookies()" 
-                    class="bg-bambu-green text-white px-4 py-2 rounded text-sm hover:bg-green-700">
-                Akzeptieren
-            </button>
-        </div>
-    </div>
-
     <script>
-        // Check if today is September 30, 2025
-        function updateEventStatus() {
-            const today = new Date();
-            const contractDate = new Date('2025-09-30');
-            
-            if (today.toDateString() === contractDate.toDateString()) {
-                document.getElementById('event-status').textContent = 'HEUTE';
-                document.getElementById('event-status').classList.add('animate-pulse');
+        // Mario expansion with 5-second delay (desktop only)
+        function initMarioExpansion() {
+            if (window.innerWidth >= 768) { // Only on desktop
+                const marioElements = document.querySelectorAll('.mario-expand');
+                
+                marioElements.forEach(element => {
+                    let timeoutId;
+                    
+                    element.addEventListener('mouseenter', () => {
+                        clearTimeout(timeoutId);
+                        const extensions = element.querySelectorAll('.mario-extension');
+                        extensions.forEach(ext => ext.style.opacity = '1');
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        timeoutId = setTimeout(() => {
+                            const extensions = element.querySelectorAll('.mario-extension');
+                            extensions.forEach(ext => {
+                                ext.style.transition = 'opacity 0.3s ease-out';
+                                ext.style.opacity = '0';
+                            });
+                        }, 5000); // 5 seconds delay
+                    });
+                });
             }
         }
 
-        // Simple Cookie Banner
-        function acceptCookies() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            localStorage.setItem('cookies-accepted', 'true');
-        }
-
-        // Hide banner if already accepted
-        if (localStorage.getItem('cookies-accepted')) {
-            document.getElementById('cookie-banner').style.display = 'none';
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
         }
 
         // Smooth scrolling for anchor links
@@ -387,14 +395,9 @@
             });
         });
 
-        // Simple form handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Kontaktformular noch nicht verbunden. Füge deine Backend-URL hinzu.');
-        });
-
-        // Initialize date checking
-        updateEventStatus();
+        // Initialize features
+        initMarioExpansion();
+        initMobileMenu();
     </script>
 </body>
 </html>
