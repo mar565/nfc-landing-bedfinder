@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BedFiner - Über mich</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Calibri', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        'bambu-green': '#16C344'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Calibri', system-ui, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="font-bold text-xl text-bambu-green">
+                    <a href="index.html" class="flex items-center">
+                        <!-- Mini Ellipse Logo -->
+                        <div class="border-2 border-bambu-green rounded-full flex items-center justify-center mr-2" 
+                             style="width: 60px; height: 24px;">
+                            <span class="text-xs font-bold">BedFiner</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="space-x-4 hidden md:flex">
+                    <a href="index.html#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="index.html#events" class="text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="about.html" class="text-bambu-green font-medium">Über mich</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Link -->
+    <section class="pt-20 pb-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <a href="index.html" class="inline-flex items-center text-bambu-green hover:text-green-700 transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Zurück zur Hauptseite
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Über mich</h1>
+            
+            <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Profile Image Placeholder -->
+                    <div class="md:col-span-1">
+                        <div class="w-48 h-48 mx-auto bg-gray-200 rounded-full flex items-center justify-center">
+                            <svg class="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-center mt-4 mb-2">M.A.R.io</h2>
+                        <p class="text-center text-gray-600">Entwickler & Innovator</p>
+                    </div>
+                    
+                    <!-- About Text -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-xl font-semibold mb-4 text-bambu-green">Leidenschaft für Innovation</h3>
+                        <p class="text-lg mb-6 leading-relaxed">
+                            Als engagierter Student und Entwickler bringe ich Leidenschaft für innovative 
+                            Technologien in jeden Aspekt meiner Arbeit ein. Mein Fokus liegt auf der 
+                            Entwicklung von Lösungen, die echte Probleme in der Gesundheitsbranche 
+                            lösen und das Leben von Patienten und Pflegekräften verbessern.
+                        </p>
+                        
+                        <p class="text-lg mb-6 leading-relaxed">
+                            Mit dem BedFiner-Projekt verfolge ich das Ziel, durch den Einsatz 
+                            modernster Technologien wie KI-gestützter Sensorik und Machine Learning 
+                            die Effizienz und Qualität der Patientenversorgung zu revolutionieren.
+                        </p>
+
+                        <p class="text-lg leading-relaxed">
+                            Mein Ansatz kombiniert technische Expertise mit einem tiefen Verständnis 
+                            für die Herausforderungen im Gesundheitswesen, um praxisnahe und 
+                            nachhaltige Innovationen zu schaffen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Expertise -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-bambu-green">Technische Expertise</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Entwicklung von IoT-Sensorsystemen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Machine Learning & KI-Algorithmen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Datenanalyse und -visualisierung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Embedded Systems Programming</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Medizintechnik-Entwicklung</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-bambu-green">Erfolge & Meilensteine</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Erfolgreiche Projektpräsentation vor Klinikleitung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Entwicklung praxistauglicher Prototypen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Kooperationsaufbau mit Kreiskliniken Reutlingen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Wissenschaftliche Publikationen geplant</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            <span>Aktive Forschung in KI & Medizintechnik</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Background -->
+            <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h3 class="text-2xl font-semibold mb-6 text-bambu-green">Mein Werdegang</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-bambu-green pl-6">
+                        <h4 class="font-semibold text-lg">Aktuell: Student & Hiwi</h4>
+                        <p class="text-gray-600 mb-2">2023 - heute</p>
+                        <p>Spezialisierung auf Medizintechnik und innovative Sensorsysteme mit Fokus 
+                        auf praktische Anwendungen im Gesundheitswesen. Parallel tätig als 
+                        wissenschaftliche Hilfskraft in der Forschung.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-gray-300 pl-6">
+                        <h4 class="font-semibold text-lg">BedFiner Projektentwicklung</h4>
+                        <p class="text-gray-600 mb-2">2024 - heute</p>
+                        <p>Konzeption und Entwicklung eines innovativen Systems zur automatischen 
+                        Bettseitenerkennung durch Integration von Drucksensorik, KI-Algorithmen 
+                        und Echtzeit-Datenverarbeitung.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-gray-300 pl-6">
+                        <h4 class="font-semibold text-lg">Forschung & Entwicklung</h4>
+                        <p class="text-gray-600 mb-2">2023 - heute</p>
+                        <p>Intensive Beschäftigung mit IoT-Technologien, Machine Learning 
+                        und deren Anwendung in der Medizintechnik. Entwicklung von Prototypen 
+                        und Durchführung von Machbarkeitsstudien.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="bg-gradient-to-r from-bambu-green to-green-600 rounded-lg shadow-lg p-8 text-white">
+                <h3 class="text-2xl font-semibold mb-4">Meine Vision</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    Ich glaube daran, dass Technologie das Potenzial hat, das Gesundheitswesen 
+                    grundlegend zu verbessern. Mit BedFiner möchte ich einen Beitrag leisten, 
+                    der sowohl Patienten als auch Pflegekräfte entlastet und die Qualität 
+                    der Versorgung nachhaltig steigert.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Mein Ziel ist es, innovative Lösungen zu entwickeln, die nicht nur 
+                    technisch überzeugend sind, sondern auch einen echten Mehrwert für 
+                    die Menschen schaffen, die sie täglich nutzen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-bambu-green">BedFiner</h3>
+                    <p class="text-gray-400">Innovative Bettseitenerkennung für die Zukunft der Pflege</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Kontakt</h4>
+                    <a href="mailto:deine@email.de" class="text-gray-400 hover:text-bambu-green">deine@email.de</a>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <a href="#" class="text-gray-400 hover:text-bambu-green block">Datenschutz</a>
+                    <a href="#" class="text-gray-400 hover:text-bambu-green block">Impressum</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 BedFiner. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
