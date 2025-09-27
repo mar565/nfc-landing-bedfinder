@@ -35,6 +35,20 @@
             opacity: 1 !important;
         }
         
+        /* Hero Mario specific behavior */
+        .hero-mario .mario-vertical {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .hero-mario.mario-active .mario-horizontal {
+            opacity: 0;
+        }
+        
+        .hero-mario.mario-active .mario-vertical {
+            opacity: 1;
+        }
+        
         .mario-extension {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             z-index: 80 !important; /* Higher than overlay (z-60) and header (z-50) */
