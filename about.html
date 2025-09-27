@@ -364,16 +364,9 @@
     </footer>
 
     <script>
-        // Mario expansion with mobile 2-second delay and desktop permanent
+        // Mario expansion with 2-second delay for all devices (no overlay on about page)
         function initMarioExpansion() {
             const marioElements = document.querySelectorAll('.mario-expand');
-            const isMobile = window.innerWidth < 768;
-            
-            // Create overlay element - higher z-index to cover header
-            const overlay = document.createElement('div');
-            overlay.id = 'mario-overlay';
-            overlay.className = 'fixed inset-0 bg-black bg-opacity-30 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
-            document.body.appendChild(overlay);
             
             marioElements.forEach(element => {
                 let timeoutId;
@@ -383,29 +376,18 @@
                     clearTimeout(timeoutId);
                     isExpanded = true;
                     
-                    // Show overlay
-                    overlay.style.opacity = '1';
-                    overlay.style.pointerEvents = 'auto';
-                    
                     // Show extensions by adding a class
                     element.classList.add('mario-active');
                 });
                 
                 element.addEventListener('mouseleave', () => {
-                    if (isMobile) {
-                        // Mobile: 2 seconds delay
-                        timeoutId = setTimeout(() => {
-                            isExpanded = false;
-                            
-                            // Hide overlay
-                            overlay.style.opacity = '0';
-                            overlay.style.pointerEvents = 'none';
-                            
-                            // Hide extensions
-                            element.classList.remove('mario-active');
-                        }, 2000); // 2 seconds for mobile
-                    }
-                    // Desktop: no fadeout, stays visible until mouse leaves
+                    // Both desktop and mobile: 2 seconds delay
+                    timeoutId = setTimeout(() => {
+                        isExpanded = false;
+                        
+                        // Hide extensions
+                        element.classList.remove('mario-active');
+                    }, 2000); // 2 seconds for both desktop and mobile
                 });
                 
                 // For touch devices
@@ -413,14 +395,10 @@
                     clearTimeout(timeoutId);
                     isExpanded = true;
                     
-                    overlay.style.opacity = '1';
-                    overlay.style.pointerEvents = 'auto';
                     element.classList.add('mario-active');
                     
-                    // Auto-hide after 2 seconds on mobile
+                    // Auto-hide after 2 seconds
                     timeoutId = setTimeout(() => {
-                        overlay.style.opacity = '0';
-                        overlay.style.pointerEvents = 'none';
                         element.classList.remove('mario-active');
                     }, 2000);
                 });
