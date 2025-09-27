@@ -168,9 +168,9 @@
             </div>
             
             <!-- Personal Brand Credit -->
-            <div class="mb-6 relative z-70">
-                <p class="text-gray-600 text-lg">Ein Projekt von</p>
-                <div class="relative inline-block group mario-expand hero-mario">
+            <div class="mb-6">
+                <p class="text-gray-600 text-lg relative z-70">Ein Projekt von</p>
+                <div class="relative inline-block group mario-expand hero-mario z-70">
                     <div class="font-bold text-2xl text-bambu-green cursor-pointer flex relative z-70">
                         <!-- M -->
                         <div class="relative">
@@ -203,7 +203,7 @@
                             
                             <!-- Über mich Button - unter dem A (alexander) positioniert -->
                             <div class="absolute top-full left-1/2 transform -translate-x-1/2 opacity-0 mario-active-only transition-opacity duration-300 z-70" style="margin-top: 11rem;">
-                                <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors whitespace-nowrap">
+                                <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors whitespace-nowrap relative z-70">
                                     Über mich
                                 </a>
                             </div>
@@ -524,7 +524,7 @@
             // Create overlay element - higher z-index to cover header
             const overlay = document.createElement('div');
             overlay.id = 'mario-overlay';
-            overlay.className = 'fixed inset-0 bg-black bg-opacity-50 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
+            overlay.className = 'fixed inset-0 bg-black bg-opacity-70 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
             document.body.appendChild(overlay);
             
             marioElements.forEach(element => {
