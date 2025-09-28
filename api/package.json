@@ -1,0 +1,17 @@
+{
+  "name": "bedfinder-api",
+  "version": "1.0.0",
+  "description": "Azure Functions API for BedFinder contact form",
+  "main": "index.js",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "@sendgrid/mail": "^7.7.0"
+  },
+  "devDependencies": {
+    "@azure/functions-core-tools": "^4.0.0"
+  }
+}
