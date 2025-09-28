@@ -64,7 +64,15 @@
         /* Regular mario extensions (exclude hero-mario) */
         .mario-extension {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            z-index: 70 !important; /* Lower z-index than main mario */
+            pointer-events: none; /* Make extensions non-clickable */
+        }
+
+        /* Ensure main mario letters are clickable with higher z-index */
+        .mario-expand a {
+            pointer-events: auto;
             z-index: 80 !important;
+            position: relative;
         }
 
         /* Mario ellipse styling */
@@ -143,7 +151,7 @@
                                 <ellipse cx="50" cy="20" rx="48" ry="18"
                                          fill="none" stroke="#16C344" stroke-width="2"/>
                             </svg>
-                            <div class="font-bold text-xl text-bambu-green cursor-pointer flex relative z-70">
+                            <a href="index.html" class="font-bold text-xl text-bambu-green cursor-pointer flex relative z-70">
                                 <!-- M -->
                                 <div class="relative">
                                     <span class="inline-block">M</span>
@@ -189,7 +197,7 @@
                                 <span>.</span>
                                 <!-- io -->
                                 <span class="inline-block">io</span>
-                            </div>
+                            </a>
                         </div>
                         <span class="ml-4 text-gray-600 font-medium relative z-70">/ BedFinder</span>
                     </div>
@@ -476,7 +484,7 @@
                                 <ellipse cx="45" cy="18" rx="43" ry="16"
                                          fill="none" stroke="#16C344" stroke-width="2"/>
                             </svg>
-                            <div class="font-bold text-lg text-bambu-green cursor-pointer flex relative z-70">
+                            <a href="index.html" class="font-bold text-lg text-bambu-green cursor-pointer flex relative z-70">
                                 <!-- M -->
                                 <div class="relative">
                                     <span class="inline-block">M</span>
@@ -522,7 +530,7 @@
                                 <span>.</span>
                                 <!-- io -->
                                 <span class="inline-block">io</span>
-                            </div>
+                            </a>
                         </div>
                         <span class="ml-4 text-gray-400 relative z-70">/ BedFinder</span>
                     </div>
