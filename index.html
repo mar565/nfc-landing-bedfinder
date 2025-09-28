@@ -47,25 +47,20 @@
             display: none;
         }
 
-        /* Über mich button visibility */
-        .hero-state-vertical .uber-mich-btn {
-            opacity: 1 !important;
-        }
-        .uber-mich-btn {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        /* Mario expansion states for regular marios only */
-        .mario-expand:not(.hero-mario).mario-active .mario-extension {
-            max-height: 200px !important;
-        }
-
-        /* Regular mario extensions (exclude hero-mario) */
-        .mario-extension {
+        /* Mario expansion states - EXACT COPY from about.html */
+        .mario-expand .mario-extension {
+            max-height: 0;
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            z-index: 70 !important; /* Lower z-index than main mario */
-            pointer-events: none; /* Make extensions non-clickable */
+            z-index: 70 !important;
+            pointer-events: none;
+        }
+
+        .mario-expand:hover .mario-extension {
+            max-height: 200px;
+        }
+
+        .mario-expand.mario-active .mario-extension {
+            max-height: 200px !important;
         }
 
         /* Ensure main mario letters are clickable with higher z-index */
@@ -75,38 +70,38 @@
             position: relative;
         }
 
-        /* Mario ellipse styling */
+        /* Mario ellipse styling - EXACT COPY from about.html */
         .mario-ellipse {
             transition: none;
         }
 
         /* Hide ellipse when mario is expanded/hovered - instant hide */
         .mario-expand:hover .mario-ellipse,
-        .mario-expand.mario-active .mario-ellipse,
-        .hero-mario.hero-state-vertical .mario-ellipse {
+        .mario-expand.mario-active .mario-ellipse {
             opacity: 0;
         }
 
-        /* Show ellipse with delay when not hovering - for header/footer only */
-        .mario-expand:not(.hero-mario):not(:hover) .mario-ellipse {
+        /* Show ellipse with delay when not hovering */
+        .mario-expand:not(:hover) .mario-ellipse {
             transition: opacity 0.3s ease-in-out;
             transition-delay: 0.3s;
             opacity: 1;
         }
 
-        /* Show ellipse with delay for hero when back to horizontal */
-        .hero-mario.hero-state-horizontal .mario-ellipse {
-            transition: opacity 0.3s ease-in-out;
-            transition-delay: 0.5s;
-            opacity: 1;
+        /* Fade out animation for regular marios */
+        .mario-expand:not(.mario-active) .mario-extension {
+            animation: fadeOut 0.3s ease-out forwards;
         }
 
-        .mario-expand:not(.hero-mario) .mario-extension {
-            max-height: 0;
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; max-height: 0; }
         }
 
-        .mario-expand:not(.hero-mario):hover .mario-extension {
-            max-height: 200px;
+        /* Smooth transitions for hero mario layouts */
+        .hero-mario .mario-horizontal,
+        .hero-mario .mario-vertical {
+            transition: all 0.3s ease-in-out;
         }
 
         /* All mario extensions should be above overlay */
@@ -119,19 +114,93 @@
             letter-spacing: 0.05em;
         }
 
-        /* Fade out animation for regular marios */
-        .mario-expand:not(.mario-active):not(.hero-mario) .mario-extension {
-            animation: fadeOut 0.3s ease-out forwards;
+        /* Hero Mario specific animations - ONLY for hero-mario */
+        .hero-mario .mario-line {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; max-height: 0; }
+        .hero-mario .mario-line.animate-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Smooth transitions for hero mario layouts */
-        .mario-horizontal, .mario-vertical {
-            transition: all 0.3s ease-in-out;
+        .hero-mario .mario-extension {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .hero-mario .mario-extension.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero-mario .mario-button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .hero-mario .mario-button.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide hero mario elements initially */
+        .hero-mario.hero-state-horizontal .mario-line,
+        .hero-mario.hero-state-horizontal .mario-extension,
+        .hero-mario.hero-state-horizontal .mario-button {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Hero Mario ellipse specific rules */
+        .hero-mario.hero-state-vertical .mario-ellipse {
+            opacity: 0;
+        }
+
+        .hero-mario.hero-state-horizontal .mario-ellipse {
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: 0.5s;
+            opacity: 1;
+        }
+
+        /* Disable pointer events ONLY on hero mario content to prevent conflicts with extended hover area */
+        .hero-mario .mario-horizontal,
+        .hero-mario .mario-vertical {
+            pointer-events: none;
+        }
+
+        /* But enable pointer events for the button in hero */
+        .hero-mario .mario-button,
+        .hero-mario .mario-button a {
+            pointer-events: auto !important;
+        }
+
+        /* Extended hover area takes precedence */
+        .hero-hover-area {
+            pointer-events: auto !important;
+        }
+
+        /* Über mich button visibility - controlled by mario-line animation */
+        .hero-state-vertical .uber-mich-btn {
+            /* Opacity is now controlled by mario-line animation */
+        }
+        .uber-mich-btn {
+            /* Opacity is now controlled by mario-line animation */
+        }
+
+        /* Disable pointer events on mario content to prevent conflicts with extended hover area */
+        .hero-mario .mario-horizontal,
+        .hero-mario .mario-vertical {
+            pointer-events: none;
+        }
+
+        /* Extended hover area takes precedence */
+        .hero-hover-area {
+            pointer-events: auto !important;
         }
     </style>
 </head>
@@ -249,6 +318,17 @@
             <div class="mb-6">
                 <p class="text-gray-600 text-lg mb-6">Ein Projekt von</p>
                 <div class="relative inline-block hero-mario hero-state-horizontal mb-6" style="z-index: 40;">
+                    <!-- Extended Hover Area -->
+                    <div class="hero-hover-area absolute left-0 right-0" style="
+                        width: 100vw;
+                        height: calc(100% + 80px);
+                        top: -40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 42;
+                        pointer-events: auto;
+                    "></div>
+
                     <!-- SVG Ellipse around M.A.R.io for hero -->
                     <svg class="mario-ellipse absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"
                          width="120" height="48" viewBox="0 0 120 48">
@@ -263,19 +343,36 @@
                         </div>
                     </div>
 
-                    <!-- Vertical Layout -->
+                    <!-- Vertical Layout with Smart Letter Animation -->
                     <div class="mario-vertical">
                         <div class="font-bold text-2xl text-bambu-green cursor-pointer relative text-left" style="z-index: 45;">
                             <div class="flex flex-col items-start gap-1">
-                                <!-- Simple text lines aligned to left -->
-                                <div>M.A.R.io</div>
-                                <div>Alexander</div>
-                                <div>Radke</div>
-                                <div>i</div>
-                                <div>o</div>
+                                <!-- M with ario extension -->
+                                <div class="mario-line flex">
+                                    <span class="mario-base-letter">M</span>
+                                    <span class="mario-extension">ario</span>
+                                </div>
+
+                                <!-- A with lexander extension -->
+                                <div class="mario-line flex">
+                                    <span class="mario-base-letter">A</span>
+                                    <span class="mario-extension">lexander</span>
+                                </div>
+
+                                <!-- R with adke extension -->
+                                <div class="mario-line flex">
+                                    <span class="mario-base-letter">R</span>
+                                    <span class="mario-extension">adke</span>
+                                </div>
+
+                                <!-- i -->
+                                <div class="mario-line">i</div>
+
+                                <!-- o -->
+                                <div class="mario-line">o</div>
 
                                 <!-- Über mich Button -->
-                                <div class="mt-4 uber-mich-btn self-start">
+                                <div class="mt-4 uber-mich-btn self-start mario-button">
                                     <a href="about.html" class="inline-block bg-bambu-green text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors whitespace-nowrap">
                                         Über mich
                                     </a>
@@ -580,26 +677,129 @@
             }
         }
 
-        // Mario expansion with 2-second delay for all devices
+        // Mario expansion with smart animation control
         function initMarioExpansion() {
-            const marioElements = document.querySelectorAll('.mario-expand:not(.hero-mario)'); // Exclude hero mario
-            const heroMario = document.querySelector('.hero-mario'); // Handle hero mario separately
+            const marioElements = document.querySelectorAll('.mario-expand:not(.hero-mario)');
+            const heroMario = document.querySelector('.hero-mario');
+            const heroHoverArea = document.querySelector('.hero-hover-area');
 
-            // Create overlay element - higher z-index to cover header
+            // Create overlay element
             const overlay = document.createElement('div');
             overlay.id = 'mario-overlay';
             overlay.className = 'fixed inset-0 bg-black bg-opacity-70 z-60 opacity-0 pointer-events-none transition-opacity duration-300';
             document.body.appendChild(overlay);
 
-            // Handle hero mario separately
+            // Reset hero mario state on page load (fix for browser back button)
             if (heroMario) {
+                console.log('Resetting hero mario state...');
+                heroMario.classList.remove('hero-state-vertical');
+                heroMario.classList.add('hero-state-horizontal');
+
+                // Hide any animated elements that might be visible
+                const lines = heroMario.querySelectorAll('.mario-line');
+                const extensions = heroMario.querySelectorAll('.mario-extension');
+                const button = heroMario.querySelector('.mario-button');
+
+                lines.forEach(line => line.classList.remove('animate-in'));
+                extensions.forEach(ext => ext.classList.remove('animate-in'));
+                if (button) button.classList.remove('animate-in');
+
+                // Reset overlay
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+            }
+
+            // Handle hero mario with complete scope isolation
+            if (heroMario && heroHoverArea) {
                 let heroTimeoutId;
+                let animationTimeouts = [];
+                let isCurrentlyExpanded = false;
+                let isAnimationRunning = false;
 
                 console.log('Hero Mario found:', heroMario);
                 console.log('Hero Mario classes:', heroMario.className);
+                console.log('Hero Hover Area found:', heroHoverArea);
+
+                const animateSmartMario = () => {
+                    if (isAnimationRunning || isCurrentlyExpanded) {
+                        console.log('Animation blocked - already running or expanded');
+                        return;
+                    }
+
+                    isAnimationRunning = true;
+                    console.log('Starting animation...');
+
+                    animationTimeouts.forEach(timeout => clearTimeout(timeout));
+                    animationTimeouts = [];
+
+                    const lines = heroMario.querySelectorAll('.mario-line');
+                    const extensions = heroMario.querySelectorAll('.mario-extension');
+                    const button = heroMario.querySelector('.mario-button');
+
+                    lines.forEach(line => line.classList.remove('animate-in'));
+                    extensions.forEach(ext => ext.classList.remove('animate-in'));
+                    if (button) button.classList.remove('animate-in');
+
+                    // Phase 1: Lines
+                    lines.forEach((line, index) => {
+                        const delay = index * 300;
+                        const timeout = setTimeout(() => {
+                            line.classList.add('animate-in');
+                            console.log(`Animating line ${index + 1}:`, line.textContent);
+                        }, delay);
+                        animationTimeouts.push(timeout);
+                    });
+
+                    // Phase 2: Extensions
+                    const extensionsStartDelay = lines.length * 300 + 200;
+                    extensions.forEach((extension, index) => {
+                        const delay = extensionsStartDelay + (index * 400);
+                        const timeout = setTimeout(() => {
+                            extension.classList.add('animate-in');
+                            console.log(`Animating extension ${index + 1}:`, extension.textContent);
+                        }, delay);
+                        animationTimeouts.push(timeout);
+                    });
+
+                    // Phase 3: Button
+                    if (button) {
+                        const buttonDelay = extensionsStartDelay + (extensions.length * 400) + 300;
+                        const timeout = setTimeout(() => {
+                            button.classList.add('animate-in');
+                            console.log('Animating button');
+                            isAnimationRunning = false;
+                            isCurrentlyExpanded = true;
+                            console.log('Animation complete - fully expanded');
+                        }, buttonDelay);
+                        animationTimeouts.push(timeout);
+                    }
+                };
+
+                const hideSmartMario = () => {
+                    console.log('Hiding mario...');
+                    isAnimationRunning = false;
+                    isCurrentlyExpanded = false;
+
+                    animationTimeouts.forEach(timeout => clearTimeout(timeout));
+                    animationTimeouts = [];
+
+                    const lines = heroMario.querySelectorAll('.mario-line');
+                    const extensions = heroMario.querySelectorAll('.mario-extension');
+                    const button = heroMario.querySelector('.mario-button');
+
+                    lines.forEach(line => line.classList.remove('animate-in'));
+                    extensions.forEach(ext => ext.classList.remove('animate-in'));
+                    if (button) button.classList.remove('animate-in');
+                };
 
                 const showVertical = () => {
-                    console.log('Showing vertical layout');
+                    console.log('Showing vertical layout - expanded:', isCurrentlyExpanded);
+
+                    if (isCurrentlyExpanded) {
+                        console.log('Already expanded, skipping...');
+                        return;
+                    }
+
                     console.log('Before classes:', heroMario.className);
 
                     overlay.style.opacity = '1';
@@ -608,11 +808,15 @@
                     heroMario.classList.remove('hero-state-horizontal');
                     heroMario.classList.add('hero-state-vertical');
 
+                    setTimeout(animateSmartMario, 100);
+
                     console.log('After classes:', heroMario.className);
                 };
 
                 const showHorizontal = () => {
                     console.log('Showing horizontal layout');
+                    hideSmartMario();
+
                     overlay.style.opacity = '0';
                     overlay.style.pointerEvents = 'none';
 
@@ -622,39 +826,44 @@
                     console.log('Reset to classes:', heroMario.className);
                 };
 
-                // Mouse events (desktop) - no timeout, immediate hide
-                heroMario.addEventListener('mouseenter', () => {
-                    console.log('Hero Mario mouse enter');
+                // ONLY use extended hover area - NO event listeners on heroMario itself
+                heroHoverArea.addEventListener('mouseenter', (e) => {
+                    console.log('Hero Hover Area mouse enter - EXTENDED');
                     clearTimeout(heroTimeoutId);
                     showVertical();
                 });
 
-                heroMario.addEventListener('mouseleave', () => {
-                    console.log('Hero Mario mouse leave');
-                    heroTimeoutId = setTimeout(showHorizontal, 500); // 1-second timeout for desktop
+                heroHoverArea.addEventListener('mouseleave', (e) => {
+                    console.log('Hero Hover Area mouse leave - EXTENDED');
+                    heroTimeoutId = setTimeout(() => {
+                        showHorizontal();
+                    }, 500);
                 });
 
-                // Touch events (mobile) - keep 2-second timeout
-                heroMario.addEventListener('touchstart', () => {
-                    console.log('Hero Mario touch start');
+                heroHoverArea.addEventListener('touchstart', (e) => {
+                    console.log('Hero Hover Area touch start - EXTENDED');
                     clearTimeout(heroTimeoutId);
                     showVertical();
-                    heroTimeoutId = setTimeout(showHorizontal, 2000);
+                    heroTimeoutId = setTimeout(() => {
+                        showHorizontal();
+                    }, 2000);
                 });
             }
 
-            // Handle regular mario elements
+            // Handle regular mario elements (Header/Footer) - same as about.html
             marioElements.forEach(element => {
                 let timeoutId;
 
                 element.addEventListener('mouseenter', () => {
                     clearTimeout(timeoutId);
                     element.classList.add('mario-active');
+                    console.log('Regular Mario mouseenter');
                 });
 
                 element.addEventListener('mouseleave', () => {
                     timeoutId = setTimeout(() => {
                         element.classList.remove('mario-active');
+                        console.log('Regular Mario mouseleave after delay');
                     }, 250);
                 });
 
