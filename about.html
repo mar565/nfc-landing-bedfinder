@@ -24,21 +24,67 @@
         body {
             font-family: 'Calibri', system-ui, sans-serif;
         }
-        
-        /* Mario expansion states */
-        .mario-active .mario-extension {
+
+        /* Mario expansion states for regular marios only */
+        .mario-expand:not(.hero-mario).mario-active .mario-extension {
             max-height: 200px !important;
         }
-        
+
+        /* Regular mario extensions (exclude hero-mario) */
         .mario-extension {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            z-index: 70 !important; /* Lower z-index than main mario */
+            pointer-events: none; /* Make extensions non-clickable */
         }
-        
-        /* Fade out animation */
+
+        /* Ensure main mario letters are clickable with higher z-index */
+        .mario-expand a {
+            pointer-events: auto;
+            z-index: 80 !important;
+            position: relative;
+        }
+
+        /* Mario ellipse styling */
+        .mario-ellipse {
+            transition: none;
+        }
+
+        /* Hide ellipse when mario is expanded/hovered - instant hide */
+        .mario-expand:hover .mario-ellipse,
+        .mario-expand.mario-active .mario-ellipse {
+            opacity: 0;
+        }
+
+        /* Show ellipse with delay when not hovering - for header/footer only */
+        .mario-expand:not(:hover) .mario-ellipse {
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: 0.3s;
+            opacity: 1;
+        }
+
+        .mario-expand .mario-extension {
+            max-height: 0;
+        }
+
+        .mario-expand:hover .mario-extension {
+            max-height: 200px;
+        }
+
+        /* All mario extensions should be above overlay */
+        .mario-extension div {
+            letter-spacing: 0.1em;
+        }
+
+        /* Mario text itself also needs better visibility */
+        .mario-expand {
+            letter-spacing: 0.05em;
+        }
+
+        /* Fade out animation for regular marios */
         .mario-expand:not(.mario-active) .mario-extension {
             animation: fadeOut 0.3s ease-out forwards;
         }
-        
+
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; max-height: 0; }
@@ -51,61 +97,70 @@
         <div class="max-w-4xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
+                    <!-- M.A.R.io / Über mich Brand with Expanding Animation -->
                     <div class="relative group flex items-center mario-expand">
-                        <a href="index.html" class="font-bold text-xl text-bambu-green cursor-pointer flex relative z-70">
-                            <!-- M -->
-                            <div class="relative">
-                                <span class="inline-block">M</span>
-                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                    <div class="flex flex-col items-center text-xl text-bambu-green leading-none">
-                                        <span>a</span>
-                                        <span>r</span>
-                                        <span>i</span>
-                                        <span>o</span>
+                        <!-- Ellipse around M.A.R.io -->
+                        <div class="relative">
+                            <!-- SVG Ellipse around M.A.R.io in Header -->
+                            <svg class="mario-ellipse absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"
+                                 width="100" height="40" viewBox="0 0 100 40">
+                                <ellipse cx="50" cy="20" rx="48" ry="18"
+                                         fill="none" stroke="#16C344" stroke-width="2"/>
+                            </svg>
+                            <a href="index.html" class="font-bold text-xl text-bambu-green cursor-pointer flex relative z-70">
+                                <!-- M -->
+                                <div class="relative">
+                                    <span class="inline-block">M</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>R</span>
+                                            <span>I</span>
+                                            <span>O</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <span>.</span>
-                            <!-- A -->
-                            <div class="relative">
-                                <span class="inline-block">A</span>
-                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                    <div class="flex flex-col items-center text-xl text-bambu-green leading-none">
-                                        <span>l</span>
-                                        <span>e</span>
-                                        <span>x</span>
-                                        <span>a</span>
-                                        <span>n</span>
-                                        <span>d</span>
-                                        <span>e</span>
-                                        <span>r</span>
+                                <span>.</span>
+                                <!-- A -->
+                                <div class="relative">
+                                    <span class="inline-block">A</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>L</span>
+                                            <span>E</span>
+                                            <span>X</span>
+                                            <span>A</span>
+                                            <span>N</span>
+                                            <span>D</span>
+                                            <span>E</span>
+                                            <span>R</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <span>.</span>
-                            <!-- R -->
-                            <div class="relative">
-                                <span class="inline-block">R</span>
-                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                    <div class="flex flex-col items-center text-xl text-bambu-green leading-none">
-                                        <span>a</span>
-                                        <span>d</span>
-                                        <span>k</span>
-                                        <span>e</span>
+                                <span>.</span>
+                                <!-- R -->
+                                <div class="relative">
+                                    <span class="inline-block">R</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>D</span>
+                                            <span>K</span>
+                                            <span>E</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <span>.</span>
-                            <!-- io -->
-                            <span class="inline-block">io</span>
-                        </a>
-                        <span class="ml-2 text-gray-600 font-medium relative z-70">/ BedFinder</span>
+                                <span>.</span>
+                                <!-- io -->
+                                <span class="inline-block">io</span>
+                            </a>
+                        </div>
+                        <span class="ml-4 text-gray-600 font-medium relative z-70">/ Über mich</span>
                     </div>
                 </div>
                 <div class="space-x-4 hidden md:flex">
                     <a href="index.html#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
                     <a href="index.html#events" class="text-gray-600 hover:text-bambu-green">Events</a>
-                    <a href="about.html" class="text-bambu-green font-medium">Über mich</a>
                     <a href="index.html#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
                 </div>
                 <!-- Mobile Menu Button -->
@@ -120,30 +175,17 @@
                 <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
                     <a href="index.html#timeline" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Roadmap</a>
                     <a href="index.html#events" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Events</a>
-                    <a href="about.html" class="block px-3 py-2 text-bambu-green font-medium">Über mich</a>
                     <a href="index.html#contact" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Kontakt</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Back Link -->
-    <section class="pt-20 pb-8 px-4">
-        <div class="max-w-4xl mx-auto">
-            <a href="index.html" class="inline-flex items-center text-bambu-green hover:text-green-700 transition-colors">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                Zurück zur Hauptseite
-            </a>
-        </div>
-    </section>
-
     <!-- About Section -->
-    <section class="pb-16 px-4">
+    <section class="pt-20 pb-16 px-4">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Über mich</h1>
-            
+
             <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Profile Image Placeholder -->
@@ -156,26 +198,26 @@
                         <h2 class="text-2xl font-bold text-center mt-4 mb-2">M.A.R.io</h2>
                         <p class="text-center text-gray-600">Entwickler & Innovator</p>
                     </div>
-                    
+
                     <!-- About Text -->
                     <div class="md:col-span-2">
                         <h3 class="text-xl font-semibold mb-4 text-bambu-green">Leidenschaft für Innovation</h3>
                         <p class="text-lg mb-6 leading-relaxed">
-                            Als engagierter Student und Entwickler bringe ich Leidenschaft für innovative 
-                            Technologien in jeden Aspekt meiner Arbeit ein. Mein Fokus liegt auf der 
-                            Entwicklung von Lösungen, die echte Probleme in der Gesundheitsbranche 
+                            Als engagierter Student und Entwickler bringe ich Leidenschaft für innovative
+                            Technologien in jeden Aspekt meiner Arbeit ein. Mein Fokus liegt auf der
+                            Entwicklung von Lösungen, die echte Probleme in der Gesundheitsbranche
                             lösen und das Leben von Patienten und Pflegekräften verbessern.
                         </p>
-                        
+
                         <p class="text-lg mb-6 leading-relaxed">
-                            Mit dem BedFinder-Projekt verfolge ich das Ziel, durch den Einsatz 
-                            modernster Technologien wie KI-gestützter Sensorik und Machine Learning 
+                            Mit dem BedFinder-Projekt verfolge ich das Ziel, durch den Einsatz
+                            modernster Technologien wie KI-gestützter Sensorik und Machine Learning
                             die Effizienz und Qualität der Patientenversorgung zu revolutionieren.
                         </p>
 
                         <p class="text-lg leading-relaxed">
-                            Mein Ansatz kombiniert technische Expertise mit einem tiefen Verständnis 
-                            für die Herausforderungen im Gesundheitswesen, um praxisnahe und 
+                            Mein Ansatz kombiniert technische Expertise mit einem tiefen Verständnis
+                            für die Herausforderungen im Gesundheitswesen, um praxisnahe und
                             nachhaltige Innovationen zu schaffen.
                         </p>
                     </div>
@@ -244,24 +286,24 @@
                     <div class="border-l-4 border-bambu-green pl-6">
                         <h4 class="font-semibold text-lg">Aktuell: Student & Hiwi</h4>
                         <p class="text-gray-600 mb-2">2023 - heute</p>
-                        <p>Spezialisierung auf Medizintechnik und innovative Sensorsysteme mit Fokus 
-                        auf praktische Anwendungen im Gesundheitswesen. Parallel tätig als 
+                        <p>Spezialisierung auf Medizintechnik und innovative Sensorsysteme mit Fokus
+                        auf praktische Anwendungen im Gesundheitswesen. Parallel tätig als
                         wissenschaftliche Hilfskraft in der Forschung.</p>
                     </div>
-                    
+
                     <div class="border-l-4 border-gray-300 pl-6">
                         <h4 class="font-semibold text-lg">BedFinder Projektentwicklung</h4>
                         <p class="text-gray-600 mb-2">2024 - heute</p>
-                        <p>Konzeption und Entwicklung eines innovativen Systems zur automatischen 
-                        Bettseitenerkennung durch Integration von Drucksensorik, KI-Algorithmen 
+                        <p>Konzeption und Entwicklung eines innovativen Systems zur automatischen
+                        Bettseitenerkennung durch Integration von Drucksensorik, KI-Algorithmen
                         und Echtzeit-Datenverarbeitung.</p>
                     </div>
-                    
+
                     <div class="border-l-4 border-gray-300 pl-6">
                         <h4 class="font-semibold text-lg">Forschung & Entwicklung</h4>
                         <p class="text-gray-600 mb-2">2023 - heute</p>
-                        <p>Intensive Beschäftigung mit IoT-Technologien, Machine Learning 
-                        und deren Anwendung in der Medizintechnik. Entwicklung von Prototypen 
+                        <p>Intensive Beschäftigung mit IoT-Technologien, Machine Learning
+                        und deren Anwendung in der Medizintechnik. Entwicklung von Prototypen
                         und Durchführung von Machbarkeitsstudien.</p>
                     </div>
                 </div>
@@ -271,14 +313,14 @@
             <div class="bg-gradient-to-r from-bambu-green to-green-600 rounded-lg shadow-lg p-8 text-white">
                 <h3 class="text-2xl font-semibold mb-4">Meine Vision</h3>
                 <p class="text-lg leading-relaxed mb-4">
-                    Ich glaube daran, dass Technologie das Potenzial hat, das Gesundheitswesen 
-                    grundlegend zu verbessern. Mit BedFinder möchte ich einen Beitrag leisten, 
-                    der sowohl Patienten als auch Pflegekräfte entlastet und die Qualität 
+                    Ich glaube daran, dass Technologie das Potenzial hat, das Gesundheitswesen
+                    grundlegend zu verbessern. Mit BedFinder möchte ich einen Beitrag leisten,
+                    der sowohl Patienten als auch Pflegekräfte entlastet und die Qualität
                     der Versorgung nachhaltig steigert.
                 </p>
                 <p class="text-lg leading-relaxed">
-                    Mein Ziel ist es, innovative Lösungen zu entwickeln, die nicht nur 
-                    technisch überzeugend sind, sondern auch einen echten Mehrwert für 
+                    Mein Ziel ist es, innovative Lösungen zu entwickeln, die nicht nur
+                    technisch überzeugend sind, sondern auch einen echten Mehrwert für
                     die Menschen schaffen, die sie täglich nutzen.
                 </p>
             </div>
@@ -292,16 +334,22 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <div class="relative group mario-expand">
-                            <div class="font-bold text-lg text-bambu-green cursor-pointer flex relative z-70">
+                            <!-- SVG Ellipse around M.A.R.io in Footer -->
+                            <svg class="mario-ellipse absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"
+                                 width="90" height="36" viewBox="0 0 90 36">
+                                <ellipse cx="45" cy="18" rx="43" ry="16"
+                                         fill="none" stroke="#16C344" stroke-width="2"/>
+                            </svg>
+                            <a href="index.html" class="font-bold text-lg text-bambu-green cursor-pointer flex relative z-70">
                                 <!-- M -->
                                 <div class="relative">
                                     <span class="inline-block">M</span>
                                     <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                        <div class="flex flex-col-reverse items-center text-lg text-bambu-green leading-none">
-                                            <span>o</span>
-                                            <span>i</span>
-                                            <span>r</span>
-                                            <span>a</span>
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>R</span>
+                                            <span>I</span>
+                                            <span>O</span>
                                         </div>
                                     </div>
                                 </div>
@@ -310,15 +358,15 @@
                                 <div class="relative">
                                     <span class="inline-block">A</span>
                                     <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                        <div class="flex flex-col-reverse items-center text-lg text-bambu-green leading-none">
-                                            <span>r</span>
-                                            <span>e</span>
-                                            <span>d</span>
-                                            <span>n</span>
-                                            <span>a</span>
-                                            <span>x</span>
-                                            <span>e</span>
-                                            <span>l</span>
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>L</span>
+                                            <span>E</span>
+                                            <span>X</span>
+                                            <span>A</span>
+                                            <span>N</span>
+                                            <span>D</span>
+                                            <span>E</span>
+                                            <span>R</span>
                                         </div>
                                     </div>
                                 </div>
@@ -327,36 +375,36 @@
                                 <div class="relative">
                                     <span class="inline-block">R</span>
                                     <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
-                                        <div class="flex flex-col-reverse items-center text-lg text-bambu-green leading-none">
-                                            <span>e</span>
-                                            <span>k</span>
-                                            <span>d</span>
-                                            <span>a</span>
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>D</span>
+                                            <span>K</span>
+                                            <span>E</span>
                                         </div>
                                     </div>
                                 </div>
                                 <span>.</span>
                                 <!-- io -->
                                 <span class="inline-block">io</span>
-                            </div>
+                            </a>
                         </div>
-                        <span class="ml-2 text-gray-400 relative z-70">/ BedFinder</span>
+                        <span class="ml-4 text-gray-400 relative z-70">/ BedFinder</span>
                     </div>
                     <p class="text-gray-400">Let's shape the future together</p>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Kontakt</h4>
                     <a href="mailto:deine@email.de" class="text-gray-400 hover:text-bambu-green">deine@email.de</a>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Legal</h4>
                     <a href="#" class="text-gray-400 hover:text-bambu-green block">Datenschutz</a>
                     <a href="#" class="text-gray-400 hover:text-bambu-green block">Impressum</a>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 M.A.R.io / BedFinder. Alle Rechte vorbehalten.</p>
             </div>
@@ -364,43 +412,30 @@
     </footer>
 
     <script>
-        // Mario expansion with 2-second delay for all devices (no overlay on about page)
+        // Mario expansion with 2-second delay for all devices
         function initMarioExpansion() {
             const marioElements = document.querySelectorAll('.mario-expand');
-            
+
             marioElements.forEach(element => {
                 let timeoutId;
-                let isExpanded = false;
-                
+
                 element.addEventListener('mouseenter', () => {
                     clearTimeout(timeoutId);
-                    isExpanded = true;
-                    
-                    // Show extensions by adding a class
                     element.classList.add('mario-active');
                 });
-                
+
                 element.addEventListener('mouseleave', () => {
-                    // Both desktop and mobile: 2 seconds delay
                     timeoutId = setTimeout(() => {
-                        isExpanded = false;
-                        
-                        // Hide extensions
                         element.classList.remove('mario-active');
-                    }, 2000); // 2 seconds for both desktop and mobile
+                    }, 250);
                 });
-                
-                // For touch devices
+
                 element.addEventListener('touchstart', () => {
                     clearTimeout(timeoutId);
-                    isExpanded = true;
-                    
                     element.classList.add('mario-active');
-                    
-                    // Auto-hide after 2 seconds
                     timeoutId = setTimeout(() => {
                         element.classList.remove('mario-active');
-                    }, 2000);
+                    }, 250);
                 });
             });
         }
@@ -409,7 +444,7 @@
         function initMobileMenu() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+
             if (mobileMenuBtn && mobileMenu) {
                 mobileMenuBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
