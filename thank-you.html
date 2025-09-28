@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vielen Dank! - BedFinder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Calibri', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        'bambu-green': '#16C344'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="refresh" content="8;url=index.html">
+    <style>
+        body {
+            font-family: 'Calibri', system-ui, sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            70% { transform: scale(0.9); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out 0.4s both;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pulse-gentle {
+            animation: pulseGentle 2s infinite;
+        }
+
+        @keyframes pulseGentle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 text-gray-900 min-h-screen flex items-center justify-center">
+    <div class="max-w-lg mx-auto text-center p-8 fade-in">
+
+        <!-- Success Icon -->
+        <div class="mb-8 bounce-in">
+            <div class="w-20 h-20 bg-bambu-green rounded-full flex items-center justify-center mx-auto shadow-lg pulse-gentle">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Thank You Message -->
+        <div class="slide-in">
+            <h1 class="text-4xl font-bold text-bambu-green mb-4">Vielen Dank!</h1>
+            <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                Ihre Nachricht wurde erfolgreich übermittelt.
+            </p>
+            <p class="text-lg text-gray-600 mb-8">
+                Ich werde mich so schnell wie möglich bei Ihnen unter
+                <strong class="text-bambu-green">bedfinder@mailbox.org</strong> melden.
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4 slide-in">
+            <a href="index.html"
+               class="inline-block bg-bambu-green text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                Zurück zur Startseite
+            </a>
+
+            <div class="mt-4">
+                <a href="about.html"
+                   class="inline-block text-bambu-green hover:text-green-700 font-medium transition-colors">
+                    Mehr über das Projekt erfahren →
+                </a>
+            </div>
+        </div>
+
+        <!-- Auto-redirect Notice -->
+        <div class="mt-8 slide-in">
+            <p class="text-sm text-gray-500 bg-white rounded-lg p-4 shadow-sm">
+                <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"></path>
+                </svg>
+                Sie werden automatisch in <span id="countdown">8</span> Sekunden zur Startseite weitergeleitet...
+            </p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="mt-8 slide-in">
+            <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h3 class="font-semibold text-gray-800 mb-3">Alternative Kontaktmöglichkeiten:</h3>
+                <div class="space-y-2 text-sm text-gray-600">
+                    <p>
+                        <strong>E-Mail:</strong>
+                        <a href="mailto:bedfinder@mailbox.org" class="text-bambu-green hover:underline">
+                            bedfinder@mailbox.org
+                        </a>
+                    </p>
+                    <p>
+                        <strong>Projekt:</strong>
+                        <a href="https://www.bed-finder.de" class="text-bambu-green hover:underline">
+                            www.bed-finder.de
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Countdown timer
+        let seconds = 8;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            seconds--;
+            if (countdownElement) {
+                countdownElement.textContent = seconds;
+            }
+
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+
+        // Optional: Cancel auto-redirect if user interacts with page
+        let userInteracted = false;
+
+        document.addEventListener('click', () => {
+            if (!userInteracted) {
+                userInteracted = true;
+                clearInterval(timer);
+                if (countdownElement) {
+                    countdownElement.parentElement.innerHTML =
+                        '<svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Automatische Weiterleitung gestoppt.';
+                }
+            }
+        });
+
+        // Track successful form submission (optional analytics)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submission', {
+                event_category: 'Contact',
+                event_label: 'Thank You Page Reached'
+            });
+        }
+    </script>
+</body>
+</html>
