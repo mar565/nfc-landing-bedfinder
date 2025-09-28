@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - BedFinder by M.A.R.io</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Calibri', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        'bambu-green': '#16C344'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Calibri', system-ui, sans-serif;
+        }
+
+        /* Mario expansion states for regular marios only */
+        .mario-expand:not(.hero-mario).mario-active .mario-extension {
+            max-height: 200px !important;
+        }
+
+        /* Regular mario extensions (exclude hero-mario) */
+        .mario-extension {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            z-index: 70 !important; /* Lower z-index than main mario */
+            pointer-events: none; /* Make extensions non-clickable */
+        }
+
+        /* Ensure main mario letters are clickable with higher z-index */
+        .mario-expand a {
+            pointer-events: auto;
+            z-index: 80 !important;
+            position: relative;
+        }
+
+        /* Mario ellipse styling */
+        .mario-ellipse {
+            transition: none;
+        }
+
+        /* Hide ellipse when mario is expanded/hovered - instant hide */
+        .mario-expand:hover .mario-ellipse,
+        .mario-expand.mario-active .mario-ellipse {
+            opacity: 0;
+        }
+
+        /* Show ellipse with delay when not hovering - for header/footer only */
+        .mario-expand:not(:hover) .mario-ellipse {
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: 0.3s;
+            opacity: 1;
+        }
+
+        .mario-expand .mario-extension {
+            max-height: 0;
+        }
+
+        .mario-expand:hover .mario-extension {
+            max-height: 200px;
+        }
+
+        /* All mario extensions should be above overlay */
+        .mario-extension div {
+            letter-spacing: 0.1em;
+        }
+
+        /* Mario text itself also needs better visibility */
+        .mario-expand {
+            letter-spacing: 0.05em;
+        }
+
+        /* Fade out animation for regular marios */
+        .mario-expand:not(.mario-active) .mario-extension {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; max-height: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <!-- M.A.R.io / Impressum Brand with Expanding Animation -->
+                    <div class="relative group flex items-center mario-expand">
+                        <!-- Ellipse around M.A.R.io -->
+                        <div class="relative">
+                            <!-- SVG Ellipse around M.A.R.io in Header -->
+                            <svg class="mario-ellipse absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"
+                                 width="100" height="40" viewBox="0 0 100 40">
+                                <ellipse cx="50" cy="20" rx="48" ry="18"
+                                         fill="none" stroke="#16C344" stroke-width="2"/>
+                            </svg>
+                            <a href="index.html" class="font-bold text-xl text-bambu-green cursor-pointer flex relative z-70">
+                                <!-- M -->
+                                <div class="relative">
+                                    <span class="inline-block">M</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>R</span>
+                                            <span>I</span>
+                                            <span>O</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- A -->
+                                <div class="relative">
+                                    <span class="inline-block">A</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>L</span>
+                                            <span>E</span>
+                                            <span>X</span>
+                                            <span>A</span>
+                                            <span>N</span>
+                                            <span>D</span>
+                                            <span>E</span>
+                                            <span>R</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- R -->
+                                <div class="relative">
+                                    <span class="inline-block">R</span>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>D</span>
+                                            <span>K</span>
+                                            <span>E</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- io -->
+                                <span class="inline-block">io</span>
+                            </a>
+                        </div>
+                        <span class="ml-4 text-gray-600 font-medium relative z-70">/ Impressum</span>
+                    </div>
+                </div>
+                <div class="space-x-4 hidden md:flex">
+                    <a href="index.html#timeline" class="text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="index.html#events" class="text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-bambu-green">Kontakt</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-bambu-green" id="mobile-menu-btn" style="z-index: 100; position: relative;">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu" style="z-index: 100;">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                    <a href="index.html#timeline" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Roadmap</a>
+                    <a href="index.html#events" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Events</a>
+                    <a href="index.html#contact" class="block px-3 py-2 text-gray-600 hover:text-bambu-green">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Impressum Section -->
+    <section class="pt-20 pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Impressum</h1>
+
+            <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <p class="text-sm text-gray-600 mb-8">Angaben gemäß § 5 TMG</p>
+
+                <div class="space-y-8">
+                    <!-- Angaben zum Dienstanbieter -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">Dienstanbieter</h2>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <p class="font-semibold text-lg mb-2">Mario Alexander Radke</p>
+                            <p class="mb-1">[Ihre Straße und Hausnummer]</p>
+                            <p class="mb-1">[PLZ] [Stadt]</p>
+                            <p class="mb-4">Deutschland</p>
+                            
+                            <div class="border-t border-gray-200 pt-4">
+                                <p class="mb-1"><strong>E-Mail:</strong> bedfinder@mailbox.org</p>
+                                <p class="mb-1"><strong>Telefon:</strong> [Ihre Telefonnummer] (optional)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projekt Information -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">Über das Projekt & Personal Branding</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-lg font-semibold mb-3">M.A.R.io - Personal Branding</h3>
+                                <p class="text-gray-700 mb-4">
+                                    M.A.R.io ist das persönliche Branding von Mario Alexander Radke zur Vermarktung seiner Person 
+                                    und Expertise im Bereich Medizintechnik und innovative Sensorsysteme. Es handelt sich um keine 
+                                    eingetragene Marke oder Firma.
+                                </p>
+                                <h3 class="text-lg font-semibold mb-3">BedFinder Projekt</h3>
+                                <p class="text-gray-700 mb-4">
+                                    BedFinder ist ein Pre-Revenue-Forschungsprojekt für ein Indoor-Lokalisierungssystem im Gesundheitswesen. 
+                                    Entwickelt in Kooperation mit der Hochschule Reutlingen und den Kreiskliniken Reutlingen.
+                                </p>
+                                <p class="text-gray-700">
+                                    Diese Website dient der Projektpräsentation zur Gewinnung von Gründungspartnern, Geschäftspartnern, 
+                                    Investoren und anderen Unterstützern für eine mögliche Kommerzialisierung.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-3">Rechtlicher Status</h3>
+                                <ul class="text-gray-700 space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Forschungsprojekt (Pre-Revenue)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Keine aktuellen Geschäftstätigkeiten</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Keine steuerlich relevanten Aktivitäten</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-2 h-2 bg-bambu-green rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                        <span>Partner-/Investorensuche für Kommerzialisierung</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verantwortlich für den Inhalt -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <p class="font-semibold">Mario Alexander Radke</p>
+                            <p>Im Katzensteig 18</p>
+                            <p>72202 Nagold</p>
+                            <p>Deutschland</p>
+                        </div>
+                    </div>
+
+                    <!-- Haftungsausschluss -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">Haftungsausschluss</h2>
+                        
+                        <h3 class="text-lg font-semibold mb-3">Haftung für Inhalte</h3>
+                        <p class="mb-4 text-gray-700">
+                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
+                            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
+                            unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach 
+                            Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                        </p>
+                        <p class="mb-6 text-gray-700">
+                            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen 
+                            Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt 
+                            der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden 
+                            Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                        </p>
+
+                        <h3 class="text-lg font-semibold mb-3">Haftung für Links</h3>
+                        <p class="mb-4 text-gray-700">
+                            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
+                            Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der 
+                            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                        </p>
+                        <p class="mb-6 text-gray-700">
+                            Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. 
+                            Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente 
+                            inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer 
+                            Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige 
+                            Links umgehend entfernen.
+                        </p>
+
+                        <h3 class="text-lg font-semibold mb-3">Urheberrecht</h3>
+                        <p class="mb-4 text-gray-700">
+                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem 
+                            deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung 
+                            außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen 
+                            Autors bzw. Erstellers.
+                        </p>
+                        <p class="text-gray-700">
+                            Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. 
+                            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte 
+                            Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem 
+                            auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. 
+                            Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+                        </p>
+                    </div>
+
+                    <!-- EU-Streitschlichtung -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">EU-Streitschlichtung</h2>
+                        <p class="text-gray-700 mb-4">
+                            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+                            <a href="https://ec.europa.eu/consumers/odr/" class="text-bambu-green hover:underline" target="_blank" rel="noopener">
+                                https://ec.europa.eu/consumers/odr/
+                            </a>
+                        </p>
+                        <p class="text-gray-700">
+                            Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, 
+                            an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                        </p>
+                    </div>
+
+                    <!-- Kontakt -->
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-4 text-bambu-green">Kontakt</h2>
+                        <p class="text-gray-700 mb-4">
+                            Bei Fragen zu diesem Impressum oder rechtlichen Angelegenheiten können Sie uns jederzeit kontaktieren:
+                        </p>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p><strong>E-Mail:</strong> bedfinder@mailbox.org</p>
+                        </div>
+                    </div>
+
+                    <!-- Hinweis -->
+                    <div class="bg-bambu-green/10 border-l-4 border-bambu-green p-6 rounded-r-lg">
+                        <h3 class="font-semibold text-bambu-green mb-2">Hinweis</h3>
+                        <p class="text-gray-700 text-sm">
+                            Dieses Impressum wurde erstellt für das BedFinder-Forschungsprojekt. 
+                            Bei Änderungen der Angaben oder rechtlichen Anforderungen wird es entsprechend aktualisiert.
+                            Stand: September 2025
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="relative group mario-expand">
+                            <!-- SVG Ellipse around M.A.R.io in Footer -->
+                            <svg class="mario-ellipse absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"
+                                 width="90" height="36" viewBox="0 0 90 36">
+                                <ellipse cx="45" cy="18" rx="43" ry="16"
+                                         fill="none" stroke="#16C344" stroke-width="2"/>
+                            </svg>
+                            <a href="index.html" class="font-bold text-lg text-bambu-green cursor-pointer flex relative z-70">
+                                <!-- M -->
+                                <div class="relative">
+                                    <span class="inline-block">M</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-32 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>R</span>
+                                            <span>I</span>
+                                            <span>O</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- A -->
+                                <div class="relative">
+                                    <span class="inline-block">A</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>L</span>
+                                            <span>E</span>
+                                            <span>X</span>
+                                            <span>A</span>
+                                            <span>N</span>
+                                            <span>D</span>
+                                            <span>E</span>
+                                            <span>R</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- R -->
+                                <div class="relative">
+                                    <span class="inline-block">R</span>
+                                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300 ease-in-out z-70 mario-extension">
+                                        <div class="flex flex-col-reverse items-center text-base text-bambu-green leading-none">
+                                            <span>A</span>
+                                            <span>D</span>
+                                            <span>K</span>
+                                            <span>E</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>.</span>
+                                <!-- io -->
+                                <span class="inline-block">io</span>
+                            </a>
+                        </div>
+                        <span class="ml-4 text-gray-400 relative z-70">/ BedFinder</span>
+                    </div>
+                    <p class="text-gray-400">Let's shape the future together</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Kontakt</h4>
+                    <a href="mailto:bedfinder@mailbox.org" class="text-gray-400 hover:text-bambu-green">bedfinder@mailbox.org</a>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <a href="datenschutz.html" class="text-gray-400 hover:text-bambu-green block">Datenschutz</a>
+                    <a href="impressum.html" class="text-gray-400 hover:text-bambu-green block">Impressum</a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 M.A.R.io / BedFinder. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mario expansion with 2-second delay for all devices
+        function initMarioExpansion() {
+            const marioElements = document.querySelectorAll('.mario-expand');
+
+            marioElements.forEach(element => {
+                let timeoutId;
+
+                element.addEventListener('mouseenter', () => {
+                    clearTimeout(timeoutId);
+                    element.classList.add('mario-active');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    timeoutId = setTimeout(() => {
+                        element.classList.remove('mario-active');
+                    }, 250);
+                });
+
+                element.addEventListener('touchstart', () => {
+                    clearTimeout(timeoutId);
+                    element.classList.add('mario-active');
+                    timeoutId = setTimeout(() => {
+                        element.classList.remove('mario-active');
+                    }, 250);
+                });
+            });
+        }
+
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Initialize features
+        initMarioExpansion();
+        initMobileMenu();
+    </script>
+</body>
+</html>
