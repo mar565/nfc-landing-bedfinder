@@ -179,8 +179,9 @@
             pointer-events: auto !important;
         }
 
-        /* Extended hover area takes precedence */
-        .hero-hover-area {
+        /* Extended areas take precedence */
+        .hero-trigger-area,
+        .hero-exit-area {
             pointer-events: auto !important;
         }
 
@@ -318,14 +319,24 @@
             <div class="mb-6">
                 <p class="text-gray-600 text-lg mb-6">Ein Projekt von</p>
                 <div class="relative inline-block hero-mario hero-state-horizontal mb-6" style="z-index: 40;">
-                    <!-- Extended Hover Area -->
-                    <div class="hero-hover-area absolute left-0 right-0" style="
+                    <!-- Large Exit Area (for ending animation) -->
+                    <div class="hero-exit-area absolute left-0 right-0" style="
                         width: 100vw;
                         height: calc(100% + 80px);
                         top: -40px;
                         left: 50%;
                         transform: translateX(-50%);
-                        z-index: 42;
+                        z-index: 41;
+                        pointer-events: auto;
+                    "></div>
+
+                    <!-- Small Trigger Area (for starting animation) - only over M.A.R.io text -->
+                    <div class="hero-trigger-area absolute" style="
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: 43;
                         pointer-events: auto;
                     "></div>
 
@@ -681,7 +692,8 @@
         function initMarioExpansion() {
             const marioElements = document.querySelectorAll('.mario-expand:not(.hero-mario)');
             const heroMario = document.querySelector('.hero-mario');
-            const heroHoverArea = document.querySelector('.hero-hover-area');
+            const heroTriggerArea = document.querySelector('.hero-trigger-area');
+            const heroExitArea = document.querySelector('.hero-exit-area');
 
             // Create overlay element
             const overlay = document.createElement('div');
@@ -709,16 +721,16 @@
                 overlay.style.pointerEvents = 'none';
             }
 
-            // Handle hero mario with complete scope isolation
-            if (heroMario && heroHoverArea) {
+            // Handle hero mario with precise trigger and large exit area
+            if (heroMario && heroTriggerArea && heroExitArea) {
                 let heroTimeoutId;
                 let animationTimeouts = [];
                 let isCurrentlyExpanded = false;
                 let isAnimationRunning = false;
 
                 console.log('Hero Mario found:', heroMario);
-                console.log('Hero Mario classes:', heroMario.className);
-                console.log('Hero Hover Area found:', heroHoverArea);
+                console.log('Hero Trigger Area found:', heroTriggerArea);
+                console.log('Hero Exit Area found:', heroExitArea);
 
                 const animateSmartMario = () => {
                     if (isAnimationRunning || isCurrentlyExpanded) {
@@ -826,22 +838,24 @@
                     console.log('Reset to classes:', heroMario.className);
                 };
 
-                // ONLY use extended hover area - NO event listeners on heroMario itself
-                heroHoverArea.addEventListener('mouseenter', (e) => {
-                    console.log('Hero Hover Area mouse enter - EXTENDED');
+                // TRIGGER AREA - small, precise hover over M.A.R.io to START animation
+                heroTriggerArea.addEventListener('mouseenter', (e) => {
+                    console.log('Hero TRIGGER Area mouse enter - PRECISE');
                     clearTimeout(heroTimeoutId);
                     showVertical();
                 });
 
-                heroHoverArea.addEventListener('mouseleave', (e) => {
-                    console.log('Hero Hover Area mouse leave - EXTENDED');
+                // EXIT AREA - large area to END animation
+                heroExitArea.addEventListener('mouseleave', (e) => {
+                    console.log('Hero EXIT Area mouse leave - LARGE');
                     heroTimeoutId = setTimeout(() => {
                         showHorizontal();
                     }, 500);
                 });
 
-                heroHoverArea.addEventListener('touchstart', (e) => {
-                    console.log('Hero Hover Area touch start - EXTENDED');
+                // Touch events on trigger area
+                heroTriggerArea.addEventListener('touchstart', (e) => {
+                    console.log('Hero TRIGGER Area touch start - PRECISE');
                     clearTimeout(heroTimeoutId);
                     showVertical();
                     heroTimeoutId = setTimeout(() => {
