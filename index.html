@@ -72,11 +72,25 @@
             transition: none;
         }
 
-        /* Hide ellipse when mario is expanded/hovered */
+        /* Hide ellipse when mario is expanded/hovered - instant hide */
         .mario-expand:hover .mario-ellipse,
         .mario-expand.mario-active .mario-ellipse,
         .hero-mario.hero-state-vertical .mario-ellipse {
             opacity: 0;
+        }
+
+        /* Show ellipse with delay when not hovering - for header/footer only */
+        .mario-expand:not(.hero-mario):not(:hover) .mario-ellipse {
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: 0.3s;
+            opacity: 1;
+        }
+
+        /* Show ellipse with delay for hero when back to horizontal */
+        .hero-mario.hero-state-horizontal .mario-ellipse {
+            transition: opacity 0.3s ease-in-out;
+            transition-delay: 0.5s;
+            opacity: 1;
         }
 
         .mario-expand:not(.hero-mario) .mario-extension {
