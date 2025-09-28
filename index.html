@@ -504,7 +504,7 @@
     <!-- Project Info Section -->
     <section class="py-16 px-4 bg-white">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center">Das BedFinder Projekt</h2></h2>
+            <h2 class="text-3xl font-bold mb-8 text-center">Das BedFinder Projekt</h2>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
@@ -542,39 +542,60 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Formspree -->
     <section id="contact" class="py-16 px-4 bg-gray-50">
         <div class="max-w-2xl mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-center">Kontakt</h2>
 
-            <form class="space-y-6 bg-white p-8 rounded-lg shadow-sm">
+            <!-- Formspree Contact Form -->
+            <form action="https://formspree.io/f/xrbyedge" method="POST" class="space-y-6 bg-white p-8 rounded-lg shadow-sm">
                 <div>
-                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                    <label for="name" class="block text-sm font-medium mb-2">Name *</label>
                     <input type="text" id="name" name="name" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent transition-colors"
+                           placeholder="Ihr vollständiger Name">
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium mb-2">E-Mail</label>
+                    <label for="email" class="block text-sm font-medium mb-2">E-Mail *</label>
                     <input type="email" id="email" name="email" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent transition-colors"
+                           placeholder="ihre@email.de">
                 </div>
 
                 <div>
-                    <label for="message" class="block text-sm font-medium mb-2">Nachricht</label>
-                    <textarea id="message" name="message" rows="4" required
-                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent"></textarea>
+                    <label for="message" class="block text-sm font-medium mb-2">Nachricht *</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bambu-green focus:border-transparent transition-colors resize-vertical"
+                              placeholder="Teilen Sie mir Ihre Gedanken zum BedFinder Projekt mit oder stellen Sie Fragen..."></textarea>
+                </div>
+
+                <!-- Hidden fields for Formspree configuration -->
+                <input type="hidden" name="_subject" value="Neue Nachricht von BedFinder Kontaktformular">
+                <input type="hidden" name="_next" value="https://www.bed-finder.de/thank-you.html">
+                <input type="hidden" name="_language" value="de">
+                <input type="hidden" name="_cc" value="bedfinder@mailbox.org">
+
+                <div class="text-sm text-gray-600">
+                    <p>* Pflichtfelder</p>
                 </div>
 
                 <button type="submit"
-                        class="w-full bg-bambu-green text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
+                        class="w-full bg-bambu-green text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-bambu-green focus:ring-offset-2 transition-all duration-200">
                     Nachricht senden
                 </button>
             </form>
 
             <div class="mt-8 text-center">
                 <p class="text-gray-600 mb-2">Oder direkt erreichen:</p>
-                <a href="mailto:deine@email.de" class="text-bambu-green hover:underline">deine@email.de</a>
+                <a href="mailto:bedfinder@mailbox.org" class="text-bambu-green hover:underline font-medium">bedfinder@mailbox.org</a>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="mt-6 text-center">
+                <p class="text-xs text-gray-500">
+                    Ihre Daten werden vertraulich behandelt und nur zur Bearbeitung Ihrer Anfrage verwendet.
+                </p>
             </div>
         </div>
     </section>
@@ -647,7 +668,7 @@
 
                 <div>
                     <h4 class="font-semibold mb-4">Kontakt</h4>
-                    <a href="mailto:deine@email.de" class="text-gray-400 hover:text-bambu-green">deine@email.de</a>
+                    <a href="mailto:bedfinder@mailbox.org" class="text-gray-400 hover:text-bambu-green">bedfinder@mailbox.org</a>
                 </div>
 
                 <div>
@@ -925,16 +946,12 @@
             });
         });
 
-        // Simple form handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Kontaktformular noch nicht verbunden. Füge deine Backend-URL hinzu.');
-        });
-
         // Initialize all features
-        updateEventStatus();
-        initMarioExpansion();
-        initMobileMenu();
+        document.addEventListener('DOMContentLoaded', function() {
+            updateEventStatus();
+            initMarioExpansion();
+            initMobileMenu();
+        });
     </script>
 </body>
 </html>
